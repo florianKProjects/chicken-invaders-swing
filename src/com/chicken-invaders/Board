@@ -1,7 +1,7 @@
 package com.chicken-invaderss;
 
-import com.chicken-invaderss.sprite.Alien;
-import com.chicken-invaderss.sprite.Player;
+import com.chicken-invaderss.sprite.Chicken;
+import com.chicken-invaderss.sprite.Spaceship;
 import com.chicken-invaderss.sprite.Shot;
 
 import javax.swing.ImageIcon;
