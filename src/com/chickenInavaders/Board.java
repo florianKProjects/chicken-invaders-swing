@@ -7,15 +7,18 @@ import com.chickenInavaders.sprite.Shot;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,8 +27,8 @@ import java.util.Random;
 public class Board extends JPanel {
 
     private Dimension d;
-    private List<Chicken> aliens;
-    private Ship player;
+    private List<Chicken> chickens;
+    private Ship ship;
     private Shot shot;
 
     private int direction = -1;
@@ -58,47 +61,47 @@ public class Board extends JPanel {
 
     private void gameInit() {
 
-        aliens = new ArrayList<>();
+        chickens = new ArrayList<>();
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 6; j++) {
 
-                var alien = new Chicken(Commons.CHICKEN_INIT_X + 18 * j,
-                        Commons.CHICKEN_INIT_Y + 18 * i);
-                aliens.add(alien);
+                var chicken = new Chicken(Commons.CHICKEN_INIT_X + Commons.CHICKEN_SPACE_BETWEEN * j,
+                        Commons.CHICKEN_INIT_Y + Commons.CHICKEN_SPACE_BETWEEN * i);
+                chickens.add(chicken);
             }
         }
 
-        player = new Ship();
+        ship = new Ship();
         shot = new Shot();
     }
 
     private void drawChickens(Graphics g) {
 
-        for (Chicken alien : aliens) {
+        for (Chicken chicken : chickens) {
 
-            if (alien.isVisible()) {
+            if (chicken.isVisible()) {
 
-                g.drawImage(alien.getImage(), alien.getX(), alien.getY(), this);
+                g.drawImage(chicken.getImage(), chicken.getX(), chicken.getY(), this);
             }
 
-            if (alien.isDying()) {
+            if (chicken.isDying()) {
 
-                alien.die();
+                chicken.die();
             }
         }
     }
 
     private void drawShip(Graphics g) {
 
-        if (player.isVisible()) {
+        if (ship.isVisible()) {
 
-            g.drawImage(player.getImage(), player.getX(), player.getY(), this);
+            g.drawImage(ship.getImage(), ship.getX(), ship.getY(), this);
         }
 
-        if (player.isDying()) {
+        if (ship.isDying()) {
 
-            player.die();
+            ship.die();
             inGame = false;
         }
     }
@@ -113,7 +116,7 @@ public class Board extends JPanel {
 
     private void drawBombing(Graphics g) {
 
-        for (Chicken a : aliens) {
+        for (Chicken a : chickens) {
 
             Chicken.Bomb b = a.getBomb();
 
@@ -187,8 +190,8 @@ public class Board extends JPanel {
             message = "Game won!";
         }
 
-        // player
-        player.act();
+        // ship
+        ship.act();
 
         // shot
         if (shot.isVisible()) {
@@ -196,20 +199,20 @@ public class Board extends JPanel {
             int shotX = shot.getX();
             int shotY = shot.getY();
 
-            for (Chicken alien : aliens) {
+            for (Chicken chicken : chickens) {
 
-                int alienX = alien.getX();
-                int alienY = alien.getY();
+                int alienX = chicken.getX();
+                int alienY = chicken.getY();
 
-                if (alien.isVisible() && shot.isVisible()) {
+                if (chicken.isVisible() && shot.isVisible()) {
                     if (shotX >= (alienX)
                             && shotX <= (alienX + Commons.CHICKEN_WIDTH)
                             && shotY >= (alienY)
                             && shotY <= (alienY + Commons.CHICKEN_HEIGHT)) {
 
                         var ii = new ImageIcon(explImg);
-                        alien.setImage(ii.getImage());
-                        alien.setDying(true);
+                        chicken.setImage(ii.getImage());
+                        chicken.setDying(true);
                         deaths++;
                         shot.die();
                     }
@@ -226,17 +229,17 @@ public class Board extends JPanel {
             }
         }
 
-        // aliens
+        // chickens
 
-        for (Chicken alien : aliens) {
+        for (Chicken chicken : chickens) {
 
-            int x = alien.getX();
+            int x = chicken.getX();
 
             if (x >= Commons.BOARD_WIDTH - Commons.BORDER_RIGHT && direction != -1) {
 
                 direction = -1;
 
-                Iterator<Chicken> i1 = aliens.iterator();
+                Iterator<Chicken> i1 = chickens.iterator();
 
                 while (i1.hasNext()) {
 
@@ -249,7 +252,7 @@ public class Board extends JPanel {
 
                 direction = 1;
 
-                Iterator<Chicken> i2 = aliens.iterator();
+                Iterator<Chicken> i2 = chickens.iterator();
 
                 while (i2.hasNext()) {
 
@@ -259,46 +262,46 @@ public class Board extends JPanel {
             }
         }
 
-        Iterator<Chicken> it = aliens.iterator();
+        Iterator<Chicken> it = chickens.iterator();
 
         while (it.hasNext()) {
 
-            Chicken alien = it.next();
+            Chicken chicken = it.next();
 
-            if (alien.isVisible()) {
+            if (chicken.isVisible()) {
 
-                int y = alien.getY();
+                int y = chicken.getY();
 
                 if (y > Commons.GROUND - Commons.CHICKEN_HEIGHT) {
                     inGame = false;
                     message = "Invasion!";
                 }
 
-                alien.act(direction);
+                chicken.act(direction);
             }
         }
 
         // bombs
         var generator = new Random();
 
-        for (Chicken alien : aliens) {
+        for (Chicken chicken : chickens) {
 
             int shot = generator.nextInt(15);
-            Chicken.Bomb bomb = alien.getBomb();
+            Chicken.Bomb bomb = chicken.getBomb();
 
-            if (shot == Commons.CHANCE && alien.isVisible() && bomb.isDestroyed()) {
+            if (shot == Commons.CHANCE && chicken.isVisible() && bomb.isDestroyed()) {
 
                 bomb.setDestroyed(false);
-                bomb.setX(alien.getX());
-                bomb.setY(alien.getY());
+                bomb.setX(chicken.getX());
+                bomb.setY(chicken.getY());
             }
 
             int bombX = bomb.getX();
             int bombY = bomb.getY();
-            int playerX = player.getX();
-            int playerY = player.getY();
+            int playerX = ship.getX();
+            int playerY = ship.getY();
 
-            if (player.isVisible() && !bomb.isDestroyed()) {
+            if (ship.isVisible() && !bomb.isDestroyed()) {
 
                 if (bombX >= (playerX)
                         && bombX <= (playerX + Commons.PLAYER_WIDTH)
@@ -306,8 +309,8 @@ public class Board extends JPanel {
                         && bombY <= (playerY + Commons.PLAYER_HEIGHT)) {
 
                     var ii = new ImageIcon(explImg);
-                    player.setImage(ii.getImage());
-                    player.setDying(true);
+                    ship.setImage(ii.getImage());
+                    ship.setDying(true);
                     bomb.setDestroyed(true);
                 }
             }
@@ -344,16 +347,16 @@ public class Board extends JPanel {
         @Override
         public void keyReleased(KeyEvent e) {
 
-            player.keyReleased(e);
+            ship.keyReleased(e);
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
 
-            player.keyPressed(e);
+            ship.keyPressed(e);
 
-            int x = player.getX();
-            int y = player.getY();
+            int x = ship.getX();
+            int y = ship.getY();
 
             int key = e.getKeyCode();
 
