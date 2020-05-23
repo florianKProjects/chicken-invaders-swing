@@ -21,8 +21,8 @@ public interface Commons {
     int CHANCE = 5;
     int DELAY = 3; //17
 
-    int PLAYER_WIDTH = 15;
-    int PLAYER_HEIGHT = 10;
+    int PLAYER_WIDTH = 18;
+    int PLAYER_HEIGHT = 30;
     int PLAYER_X = (Commons.BOARD_WIDTH / 2) - (Commons.PLAYER_WIDTH / 2);
     int PLAYER_Y = Commons.GROUND - (Commons.PLAYER_HEIGHT * 2);
 }

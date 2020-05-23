@@ -1,5 +1,7 @@
 package com.chickenInavaders.sprite;
 
+import com.chickenInavaders.Commons;
+
 import javax.swing.ImageIcon;
 
 public class Shot extends Sprite {
@@ -18,10 +20,7 @@ public class Shot extends Sprite {
         var ii = new ImageIcon(shotImg);
         setImage(ii.getImage());
 
-        int H_SPACE = 6;
-        setX(x + H_SPACE);
-
-        int V_SPACE = 1;
-        setY(y - V_SPACE);
+        setX(x + Commons.PLAYER_WIDTH / 2);
+        setY(y - 1);
     }
 }

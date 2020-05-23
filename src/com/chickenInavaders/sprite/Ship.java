@@ -11,10 +11,10 @@ public class Ship extends Sprite {
 
     public Ship() {
 
-        initPlayer();
+        initShip();
     }
 
-    private void initPlayer() {
+    private void initShip() {
 
         var playerImg = "src/images/player.png";
         var ii = new ImageIcon(playerImg);
@@ -22,11 +22,8 @@ public class Ship extends Sprite {
         width = ii.getImage().getWidth(null);
         setImage(ii.getImage());
 
-        int START_X = Commons.PLAYER_X;
-        setX(START_X);
-
-        int START_Y = Commons.PLAYER_Y;
-        setY(START_Y);
+        setX(Commons.PLAYER_X);
+        setY(Commons.PLAYER_Y);
     }
 
     public void act() {
