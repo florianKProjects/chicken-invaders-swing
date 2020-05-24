@@ -21,6 +21,6 @@ public class Shot extends Sprite {
         setImage(ii.getImage());
 
         setX(x + Commons.PLAYER_WIDTH / 2);
-        setY(y - 1);
+        setY(y - 10);
     }
 }
