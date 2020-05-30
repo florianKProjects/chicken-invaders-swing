@@ -1,0 +1,32 @@
+{
+
+"Saves":[
+        {
+          "Id": 1,
+          "Name":"Florian",
+          "Score":50,
+          "Data":"23/05/2020",
+          "Level": 2
+        },
+        {
+          "Id":2,
+          "Name":"Haana",
+          "Score":50,
+          "Data":"23/05/2020",
+          "Level": 3
+        },
+        {
+          "Id":3,
+          "Name":"Guy",
+        "Score":50,
+        "Data":"23/05/2020",
+        "Level": 2
+      }, {
+        "Id":4,
+        "Name":"Dor",
+        "Score":50,
+        "Data":"23/05/2020",
+        "Level": 1
+      }
+
+]}
