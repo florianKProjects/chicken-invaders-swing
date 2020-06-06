@@ -1,6 +1,7 @@
 package com.chickenInavaders.sprite;
 
-import java.awt.Image;
+
+import java.awt.*;
 
 public class Sprite {
 
