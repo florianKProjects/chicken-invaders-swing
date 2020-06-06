@@ -8,11 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Toolkit;
+import java.awt.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -66,7 +62,7 @@ public class Board extends JPanel {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 6; j++) {
 
-                var chicken = new Chicken(Commons.CHICKEN_INIT_X + Commons.CHICKEN_SPACE_BETWEEN * j,
+                Chicken chicken = new Chicken(Commons.CHICKEN_INIT_X + Commons.CHICKEN_SPACE_BETWEEN * j,
                         Commons.CHICKEN_INIT_Y + Commons.CHICKEN_SPACE_BETWEEN * i);
                 chickens.add(chicken);
             }
@@ -172,8 +168,8 @@ public class Board extends JPanel {
         g.setColor(Color.white);
         g.drawRect(50, Commons.BOARD_WIDTH / 2 - 30, Commons.BOARD_WIDTH - 100, 50);
 
-        var small = new Font("Helvetica", Font.BOLD, 14);
-        var fontMetrics = this.getFontMetrics(small);
+        Font small = new Font("Helvetica", Font.BOLD, 14);
+        FontMetrics fontMetrics = this.getFontMetrics(small);
 
         g.setColor(Color.white);
         g.setFont(small);
@@ -210,7 +206,7 @@ public class Board extends JPanel {
                             && shotY >= (alienY)
                             && shotY <= (alienY + Commons.CHICKEN_HEIGHT)) {
 
-                        var ii = new ImageIcon(explImg);
+                        ImageIcon ii = new ImageIcon(explImg);
                         chicken.setImage(ii.getImage());
                         chicken.setDying(true);
                         deaths++;
@@ -282,7 +278,7 @@ public class Board extends JPanel {
         }
 
         // bombs
-        var generator = new Random();
+        Random generator = new Random();
 
         for (Chicken chicken : chickens) {
 
@@ -308,7 +304,7 @@ public class Board extends JPanel {
                         && bombY >= (playerY)
                         && bombY <= (playerY + Commons.PLAYER_HEIGHT)) {
 
-                    var ii = new ImageIcon(explImg);
+                    ImageIcon ii = new ImageIcon(explImg);
                     ship.setImage(ii.getImage());
                     ship.setDying(true);
                     bomb.setDestroyed(true);

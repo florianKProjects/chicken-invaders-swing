@@ -16,8 +16,8 @@ public class Shot extends Sprite {
 
     private void initShot(int x, int y) {
 
-        var shotImg = "src/images/shot.png";
-        var ii = new ImageIcon(shotImg);
+        String shotImg = "src/images/shot.png";
+        ImageIcon ii = new ImageIcon(shotImg);
         setImage(ii.getImage());
 
         setX(x + Commons.PLAYER_WIDTH / 2);
