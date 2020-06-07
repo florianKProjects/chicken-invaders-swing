@@ -1,4 +1,4 @@
-package com.chickenInavaders.GamePanels;
+package src.com.chickenInavaders.GamePanels;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -10,10 +10,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.FileReader;
 import java.util.HashMap;
-import com.chickenInavaders.GameButton;
-
-import com.chickenInavaders.Commons;
-import com.chickenInavaders.LayoutManager;
+import src.com.chickenInavaders.GameButton;
+import src.com.chickenInavaders.Commons;
+import src.com.chickenInavaders.LayoutManager;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

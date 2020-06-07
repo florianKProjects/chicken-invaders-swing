@@ -1,4 +1,4 @@
-package com.chickenInavaders;
+package src.com.chickenInavaders;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

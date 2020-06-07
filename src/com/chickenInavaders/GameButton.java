@@ -1,4 +1,4 @@
-package com.chickenInavaders;
+package src.com.chickenInavaders;
 
 import javax.swing.*;
 import javax.swing.border.Border;

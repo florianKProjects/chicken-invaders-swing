@@ -1,11 +1,10 @@
-package com.chickenInavaders.GamePanels;
+package src.com.chickenInavaders.GamePanels;
 
-import com.chickenInavaders.GameButton;
-import com.chickenInavaders.ImageDraw;
-import com.chickenInavaders.LayoutManager;
+import src.com.chickenInavaders.GameButton;
+import src.com.chickenInavaders.ImageDraw;
+import src.com.chickenInavaders.LayoutManager;
+import src.com.chickenInavaders.Commons;
 
-
-import com.chickenInavaders.Commons;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;

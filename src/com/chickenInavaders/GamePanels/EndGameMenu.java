@@ -1,4 +1,4 @@
-package com.chickenInavaders.GamePanels;
+package src.com.chickenInavaders.GamePanels;
 
 import javax.swing.*;
 

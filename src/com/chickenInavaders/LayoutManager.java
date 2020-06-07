@@ -1,6 +1,6 @@
-package com.chickenInavaders;
+package src.com.chickenInavaders;
 
-import com.chickenInavaders.GamePanels.*;
+import src.com.chickenInavaders.GamePanels.*;
 
 import javax.swing.*;
 import java.awt.*;

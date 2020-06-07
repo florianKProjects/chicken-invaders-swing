@@ -1,4 +1,4 @@
-package com.chickenInavaders;
+package src.com.chickenInavaders;
 
 import java.awt.*;
 
