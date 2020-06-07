@@ -41,7 +41,7 @@ public class GameState {
         }
 
         ship=new Ship();
-        ship.position=new Point((gamePanelWidth-90)/2,gamePanelHeight-180);
+        ship.position=new Point((gamePanelWidth-90)/2,gamePanelHeight-150);
         shots=new ArrayList<Sprite>();
         eggs=new ArrayList<Sprite>();
 

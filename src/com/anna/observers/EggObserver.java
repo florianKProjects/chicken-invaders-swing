@@ -24,7 +24,6 @@ public class EggObserver implements Observer {
             if (gameState.stopGameFrames == 0) {
                 gameState.timer.stop();
                 gameState.stopGameFrames = 10;
-                SoundPlayer.play("C:\\Program Files (x86)\\Microsoft Office\\root\\Office16\\MEDIA\\EXPLODE.WAV");
                 gameState.gameObservable.notifyLevelState(gameState.levelState);
             }
             gameState.stopGameFrames--;
