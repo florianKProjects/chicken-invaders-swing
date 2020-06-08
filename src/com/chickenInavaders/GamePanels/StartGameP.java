@@ -84,6 +84,7 @@ public class StartGameP extends JPanel {
             public void actionPerformed(ActionEvent evt) {
                 ButtonList.get("Start").setSelected(!ButtonList.get("Start").isSelected());
                 panelGraph.cardLayout.show(panelGraph.cardPane, "Game");
+                panelGraph.cardPane.transferFocus();
             }
         });
 
