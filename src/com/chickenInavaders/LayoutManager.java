@@ -49,17 +49,15 @@ public class LayoutManager extends JFrame {
 
         gameUI = new GameUI(this);
         gameUI.setName("Game");
-        //setLayout(new BorderLayout());
-        //add((GameUI) gameUI, BorderLayout.CENTER);
         gameUI.addGameObserver(new TestObserver());
 
         //StartGame
         cardPane.setLayout(card);
+        cardPane.add("Game", gameUI);
         cardPane.add("StartGame", startGameP);
         cardPane.add("MainMenu", mainMenuP);
         cardPane.add("Settings", settingsP);
         cardPane.add("About", aboutP);
-        cardPane.add("Game", gameUI);
 
         add(cardPane);
         cardLayout = (CardLayout) cardPane.getLayout();
