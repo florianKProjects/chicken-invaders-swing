@@ -78,5 +78,8 @@ public interface Commons {
     String BACKGROUND_ABOUT_IMG = "src/com/chickenInavaders/images/About.jpg";
     String TXT_ABOUT_IMG = "src/com/chickenInavaders/images/Abouttest.png";
 
-
+    //Sounds
+    String CLICK_SOUND = "src/com/chickenInavaders/sounds/CLICK.WAV";
+    String WHOOSH_SOUND = "src/com/chickenInavaders/sounds/WHOOSH.WAV";
+    String EXPLODE_SOUND = "src/com/chickenInavaders/sounds/EXPLODE.WAV";
 }
