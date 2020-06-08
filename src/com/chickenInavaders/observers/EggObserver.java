@@ -1,5 +1,6 @@
 package src.com.chickenInavaders.observers;
 
+import src.com.chickenInavaders.Commons;
 import src.com.chickenInavaders.SoundPlayer;
 import src.com.chickenInavaders.gameui.GameState;
 import src.com.chickenInavaders.gameui.LevelState;
@@ -24,7 +25,7 @@ public class EggObserver implements Observer {
             if (gameState.stopGameFrames == 0) {
                 gameState.timer.stop();
                 gameState.stopGameFrames = 10;
-                SoundPlayer.play("C:\\Program Files (x86)\\Microsoft Office\\root\\Office16\\MEDIA\\EXPLODE.WAV");
+                SoundPlayer.play(Commons.EXPLODE_SOUND);
                 gameState.gameObservable.notifyLevelState(gameState.levelState);
             }
             gameState.stopGameFrames--;
@@ -40,7 +41,7 @@ public class EggObserver implements Observer {
             if (currEgg.intersect(gameState.shots.get(i))) {
                 gameState.shots.get(i).setState(SpriteState.Dead);
                 currEgg.setState(SpriteState.Dying);
-                SoundPlayer.play("C:\\Program Files (x86)\\Microsoft Office\\Office12\\Groove\\Sounds\\Things\\WHOOSH.WAV");
+                SoundPlayer.play(Commons.WHOOSH_SOUND);
                 gameState.score += 10;
                 break;
             }

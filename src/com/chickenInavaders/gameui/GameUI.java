@@ -1,5 +1,6 @@
 package src.com.chickenInavaders.gameui;
 
+import src.com.chickenInavaders.Commons;
 import src.com.chickenInavaders.LayoutManager;
 import src.com.chickenInavaders.SoundPlayer;
 import src.com.chickenInavaders.listeners.KeyboardListener;
@@ -92,7 +93,7 @@ public class GameUI extends JPanel implements IGameUI {
         ShotObserver shotObserver = new ShotObserver(gameState);
         shot.addObserver(shotObserver);
         gameState.shots.add(shot);
-        SoundPlayer.play("C:\\Program Files (x86)\\Microsoft Office\\Office12\\MEDIA\\CLICK.WAV");
+        SoundPlayer.play(Commons.CLICK_SOUND);
     }
 
     private void paintList(List<Sprite> characters,Graphics graphics){

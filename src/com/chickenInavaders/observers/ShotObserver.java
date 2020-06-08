@@ -1,4 +1,5 @@
 package src.com.chickenInavaders.observers;
+import src.com.chickenInavaders.Commons;
 import src.com.chickenInavaders.SoundPlayer;
 import src.com.chickenInavaders.gameui.LevelState;
 import src.com.chickenInavaders.sprites.SpriteState;
@@ -25,7 +26,7 @@ public class ShotObserver  implements Observer {
             if (gameState.chickens.get(i).getState() != SpriteState.Alive) continue;
             if (currShot.intersect(gameState.chickens.get(i))) {
                 gameState.chickens.get(i).setState(SpriteState.Dying);
-                SoundPlayer.play("C:\\Program Files (x86)\\Microsoft Office\\Office12\\MEDIA\\WHOOSH.WAV");
+                SoundPlayer.play(Commons.WHOOSH_SOUND);
                 gameState.score += 20;
                 currShot.setState(SpriteState.Dead);
                 checkIfLevelCompleted();
