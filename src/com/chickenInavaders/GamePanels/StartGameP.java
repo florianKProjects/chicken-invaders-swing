@@ -16,6 +16,8 @@ import src.com.chickenInavaders.LayoutManager;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import src.com.chickenInavaders.TestObserver;
+import src.com.chickenInavaders.gameui.GameUI;
 
 public class StartGameP extends JPanel {
 
@@ -33,7 +35,7 @@ public class StartGameP extends JPanel {
 
     private HashMap<String,GameButton> ButtonList;
     private HashMap<String,Loads> LoadsList;
-    private  int AmountOfPlayers;
+    private int AmountOfPlayers;
     private JLabel BackGrondP;
     private JList LoadList;
     private JTextField p1Name;
@@ -75,6 +77,13 @@ public class StartGameP extends JPanel {
             public void actionPerformed(ActionEvent evt) {
                 ButtonList.get("Back").setSelected(!ButtonList.get("Back").isSelected());
                 panelGraph.cardLayout.show(panelGraph.cardPane, "MainMenu");
+            }
+        });
+
+        ButtonList.get("Start").addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent evt) {
+                ButtonList.get("Start").setSelected(!ButtonList.get("Start").isSelected());
+                panelGraph.cardLayout.show(panelGraph.cardPane, "Game");
             }
         });
 

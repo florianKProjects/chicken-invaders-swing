@@ -1,4 +1,6 @@
 package src.com.chickenInavaders.gameui;
+
+import src.com.chickenInavaders.LayoutManager;
 import src.com.chickenInavaders.SoundPlayer;
 import src.com.chickenInavaders.listeners.KeyboardListener;
 import src.com.chickenInavaders.listeners.TickListener;
@@ -9,6 +11,7 @@ import src.com.chickenInavaders.sprites.Egg;
 import src.com.chickenInavaders.sprites.Shot;
 import src.com.chickenInavaders.sprites.Sprite;
 import src.com.chickenInavaders.sprites.SpriteState;
+
 import javax.swing.*;
 import javax.swing.Timer;
 import java.awt.*;
@@ -21,8 +24,10 @@ public class GameUI extends JPanel implements IGameUI {
     public GameObservable gameObservable;
     Bkg bkg1 = new Bkg();
     Bkg bkg2 = new Bkg();
+    private LayoutManager panelGraph;
 
-    public GameUI() {
+    public GameUI(LayoutManager l) {
+        panelGraph = l;
         setSize(600,800);
         gameObservable=new GameObservable();
         KeyboardListener keyboardListener = new KeyboardListener(this);
