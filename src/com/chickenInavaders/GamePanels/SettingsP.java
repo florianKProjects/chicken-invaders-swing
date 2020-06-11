@@ -1,6 +1,7 @@
-package com.chickenInavaders.GamePanels;
+package src.com.chickenInavaders.GamePanels;
 
-import com.chickenInavaders.*;
+import src.com.chickenInavaders.*;
+import src.com.chickenInavaders.LayoutManager;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -12,7 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-import com.chickenInavaders.LayoutManager;
 import net.miginfocom.swing.MigLayout;
 
 
@@ -50,13 +50,13 @@ public class SettingsP extends JPanel   {
     private HashMap<String, JTextField> JTextKeyFieldsPlayer2 = new HashMap<String, JTextField>();
     private GameButton backB;
     private GameButton saveB;
-    private JSlider sondSilder;
+    private JSlider soundSilder;
     private LayoutManager b = null;
 
     public SettingsP(LayoutManager b) {
         this.b = b;
         settingsFile = new Settings();
-        sondSilder = new JSlider();
+        soundSilder = new JSlider();
         backB = new GameButton(Commons.BACK_IMG);
         saveB = new GameButton(Commons.SAVE_IMG);
         setUpImages();
@@ -128,7 +128,7 @@ public class SettingsP extends JPanel   {
             }
         });
 
-        add(sondSilder, "cell 1 6 7 2");
+        add(soundSilder, "cell 1 6 7 2");
         add(backB, "cell 0 17 4 2");
         add(saveB, "cell 6 17 4 2");
     }
@@ -192,18 +192,18 @@ public class SettingsP extends JPanel   {
         }
     }
     private void setSoundSlider(){
-        sondSilder = new JSlider(JSlider.CENTER, 0, 100, settingsFile.getSoundVolume());
-        sondSilder.setMinorTickSpacing(2);
-        sondSilder.setMajorTickSpacing(10);
-        sondSilder.setPaintTicks(true);
-        sondSilder.setOpaque(false);
-        sondSilder.setBackground(Color.BLUE);
-        sondSilder.setPaintLabels(true);
-        sondSilder.setForeground(Color.white);
-        sondSilder.addChangeListener(new ChangeListener() {
+        soundSilder = new JSlider(JSlider.CENTER, 0, 100, settingsFile.getSoundVolume());
+        soundSilder.setMinorTickSpacing(2);
+        soundSilder.setMajorTickSpacing(10);
+        soundSilder.setPaintTicks(true);
+        soundSilder.setOpaque(false);
+        soundSilder.setBackground(Color.BLUE);
+        soundSilder.setPaintLabels(true);
+        soundSilder.setForeground(Color.white);
+        soundSilder.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent event) {
                 settingschanged = true;
-                int value = sondSilder.getValue();
+                int value = soundSilder.getValue();
                 settingsFile.setSoundVolume(value);
                 if (Commons.IS_DEBUG)
                     System.out.println("Sound Volume Changed to " + value);

@@ -1,6 +1,6 @@
-package com.chickenInavaders;
+package src.com.chickenInavaders;
 
-import com.chickenInavaders.sprite.Chicken;
+import src.com.chickenInavaders.sprites.Chicken;
 
 import java.util.List;
 
