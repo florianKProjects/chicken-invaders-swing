@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 public class LayoutManager extends JFrame {
 
     public SettingsP settingsP;
+    public SaveReader gameSaves;
+    public EndGameMenu endGameP;
     public MainMenu mainMenuP;
     public StartGameP startGameP;
     public AboutP aboutP;
@@ -32,6 +34,7 @@ public class LayoutManager extends JFrame {
 
     private void init() {
         //all tha game panels
+        gameSaves = new SaveReader();
         cardPane = new JPanel();
         card = new CardLayout();
 
@@ -51,6 +54,9 @@ public class LayoutManager extends JFrame {
         gameUI.setName("Game");
         gameUI.addGameObserver(new TestObserver());
 
+        endGameP = new EndGameMenu(this);
+        endGameP.setName("EndGameMenu");
+
         //StartGame
         cardPane.setLayout(card);
         cardPane.add("Game", gameUI);
@@ -58,6 +64,7 @@ public class LayoutManager extends JFrame {
         cardPane.add("MainMenu", mainMenuP);
         cardPane.add("Settings", settingsP);
         cardPane.add("About", aboutP);
+        cardPane.add("EndGameMenu", endGameP);
 
         add(cardPane);
         cardLayout = (CardLayout) cardPane.getLayout();
