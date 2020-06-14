@@ -31,6 +31,7 @@ public interface Commons {
     //--------Json Files ------------------------
       String SETTINGS_FILE = "src/com/chickenInavaders/jsonFiles/Settings.json";
 
+    String SAVES_FILE = "src/com/chickenInavaders/jsonFiles/Save.json";
 
     //---------------- MainMenuP -------
       int BOARD_WIDTH = 600;
@@ -82,4 +83,6 @@ public interface Commons {
     String CLICK_SOUND = "src/com/chickenInavaders/sounds/CLICK.WAV";
     String WHOOSH_SOUND = "src/com/chickenInavaders/sounds/WHOOSH.WAV";
     String EXPLODE_SOUND = "src/com/chickenInavaders/sounds/EXPLODE.WAV";
+    //------------------------ AboutP ---------------------------
+    String END_GAME_BACKGOURND = "src/com/chickenInavaders/images/EngGameMenu.jpg";
 }
