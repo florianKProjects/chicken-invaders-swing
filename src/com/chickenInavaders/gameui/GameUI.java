@@ -147,7 +147,9 @@ public class GameUI extends JPanel implements IGameUI {
         gameState.ship.paint(graphics);
         if(gameState.stopGameFlag){
             if(gameState.levelState==LevelState.Lose)
-                paintGameOver(graphics);
+                panelGraph.cardLayout.show(panelGraph.cardPane, "EndGameMenu");
+                panelGraph.gameSaves.addRecord(panelGraph.startGameP.getPName(),gameState.score,gameState.level);
+                panelGraph.endGameP.setScore(Integer.toString(gameState.score));
         }
     }
 
@@ -166,6 +168,9 @@ public class GameUI extends JPanel implements IGameUI {
         gameState.levelState=LevelState.Started;
         gameState.timer.start();
         gameObservable.notifyLevelState(gameState.levelState);
+
+    }
+    public void saveGame(){
 
     }
 
