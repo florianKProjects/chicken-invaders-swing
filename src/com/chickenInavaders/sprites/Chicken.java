@@ -8,7 +8,7 @@ import java.util.Hashtable;
 
 public class Chicken extends Sprite {
     final static Image noWings = new ImageIcon("src/com/chickenInavaders/images/BigChicken2.png").getImage();
-    final static Image wings = new ImageIcon("src/com/chickenInavaders/images/BigChicken1.png").getImage();
+    final static Image wings = new ImageIcon("src/com/chickenInavaders/images/BigChicken1.gif").getImage();
     private final static Dictionary<SpriteState,Image> chickenImages = new Hashtable<SpriteState, Image>(){
         {
             put(SpriteState.Alive,wings);
