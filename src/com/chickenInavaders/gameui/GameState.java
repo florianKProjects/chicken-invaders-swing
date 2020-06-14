@@ -27,9 +27,11 @@ public class GameState {
     public GameObservable gameObservable;
 
     GameState(int gamePanelHeight,int gamePanelWidth){
+        this.score = 0;
         this.gamePanelHeight=gamePanelHeight;
         this.gamePanelWidth=gamePanelWidth;
         chickens = new ArrayList<Sprite>();
+
         for(int i=0;i<40;i++)
             chickens.add(new Chicken());
         int row=-1;
