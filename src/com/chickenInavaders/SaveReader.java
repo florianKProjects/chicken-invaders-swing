@@ -17,50 +17,55 @@ import java.util.Map;
 
 public class SaveReader {
     public HashMap<Integer, save> LoadsList;
-    private  JSONObject SaveFile;
+    private JSONObject SaveFile;
     private int index;
     private LocalDateTime now;
 
-
-    public SaveReader(){
-        index=0;
-        LoadsList = new HashMap<Integer, save> ();
+    public SaveReader() {
+        index = 0;
+        LoadsList = new HashMap<Integer, save>();
         init();
     }
-    private void init(){
+
+    private void init() {
         now = LocalDateTime.now();
         LoadSaveFile();
-        //addRecord("test3",1,2);
+        // addRecord("test3",1,2);
     }
-    private void LoadSaveFile(){
+
+    private void LoadSaveFile() {
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader(Commons.LOAD_FILE));
-            // A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.
+            // A JSON object. Key value pairs are unordered. JSONObject supports
+            // java.util.Map interface.
             SaveFile = (JSONObject) obj;
             // A JSON array. JSONObject supports java.util.List interface.
-            index =(int)((long)SaveFile.get("lastIndex"));
+            index = (int) ((long) SaveFile.get("lastIndex"));
             JSONArray companyList = (JSONArray) SaveFile.get("Saves");
-            companyList.forEach(item  ->{
+            companyList.forEach(item -> {
                 JSONObject obj2 = (JSONObject) item;
-                LoadsList.put(Integer.parseInt(obj2.get("Id").toString()),new save(Integer.parseInt(obj2.get("Id").toString()),obj2.get("Name").toString(),Integer.parseInt(obj2.get("Score").toString()),Integer.parseInt(obj2.get("Level").toString()),obj2.get("Date").toString()));
+                LoadsList.put(Integer.parseInt(obj2.get("Id").toString()),
+                        new save(Integer.parseInt(obj2.get("Id").toString()), obj2.get("Name").toString(),
+                                Integer.parseInt(obj2.get("Score").toString()),
+                                Integer.parseInt(obj2.get("Level").toString()), obj2.get("Date").toString()));
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void addRecord(String name,int score,int level,String date){
-        LoadsList.put(++index,new save(index,name,score,level,date));
-        SaveFile.put("lastIndex",index);
-        HashMap<String, Object > newSave = new HashMap<String, Object >();
+
+    public void addRecord(String name, int score, int level, String date) {
+        LoadsList.put(++index, new save(index, name, score, level, date));
+        SaveFile.put("lastIndex", index);
+        HashMap<String, Object> newSave = new HashMap<String, Object>();
         newSave.put("Id", ++index);
         newSave.put("Name", name);
         newSave.put("Score", score);
         newSave.put("Level", level);
         newSave.put("Date", date);
         ((JSONArray) SaveFile.get("Saves")).add(newSave);
-        try (FileWriter file = new FileWriter(Commons.SAVES_FILE))
-        {
+        try (FileWriter file = new FileWriter(Commons.SAVES_FILE)) {
             file.write(SaveFile.toString());
             if (Commons.IS_DEBUG)
                 System.out.println("Successfully updated json Saves file");
@@ -68,23 +73,27 @@ public class SaveReader {
             e.printStackTrace();
         }
     }
-    public void addRecord(String name,int score,int level) {
+
+    public void addRecord(String name, int score, int level) {
         DateTimeFormatter gameDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        addRecord(name,score,level,gameDate.format(now));
-    }
-    private JSONObject jsonFormatFromStirng(String s)
-    {
-            return null;
+        addRecord(name, score, level, gameDate.format(now));
     }
 
-    public class save{
+    private JSONObject jsonFormatFromStirng(String s) {
+        return null;
+    }
+
+    public class save {
         public int id;
         public String name;
         public int score;
         public String date;
         public int level;
-        public save(){}
-        public save(int id,String name,int score,int level,String date){
+
+        public save() {
+        }
+
+        public save(int id, String name, int score, int level, String date) {
             this.id = id;
             this.name = name;
             this.score = score;
@@ -94,18 +103,17 @@ public class SaveReader {
 
         @Override
         public String toString() {
-            return String.format("{\"Id\":%d,\"Data\": %s,\"Level\" :%d,\"Id\" : %d,\"Name\" : %s},",id,date,level,id,name);
+            return String.format("{\"Id\":%d,\"Data\": %s,\"Level\" :%d,\"Id\" : %d,\"Name\" : %s},", id, date, level,
+                    id, name);
         }
     }
-/*
- result.put("Id", ++index);
-        result.put("Name", name);
-        result.put("Score", score);
-        result.put("Level", level);
-        result.put("Data", date);
 
- */
+    /*
+     * result.put("Id", ++index); result.put("Name", name); result.put("Score",
+     * score); result.put("Level", level); result.put("Data", date);
+     * 
+     */
     public static void main(String[] args) {
-       SaveReader mainFrame = new SaveReader();
+        SaveReader mainFrame = new SaveReader();
     }
 }
