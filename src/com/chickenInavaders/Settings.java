@@ -15,6 +15,9 @@ public class Settings {
     private JSONParser parser;
     private Object obj;
     private JSONObject jsonObject;
+
+    private static final Settings instance = new Settings();
+
     public Settings(){
         init();
     }
@@ -93,10 +96,8 @@ public class Settings {
         keyboardLayoutPlayer2.replace(Key,value);
         ((JSONObject)((JSONObject)jsonObject.get("controls")).get("player_2")).put(Key,value);
     }
-}
-/*
- public static void main(String[] args) {
-        Settings mainFrame = new Settings();
-    }
 
- */
+    public static Settings getInstance() {
+        return instance;
+    }
+}

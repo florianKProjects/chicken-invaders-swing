@@ -36,7 +36,7 @@ public class GameUI extends JPanel implements IGameUI {
 
         bkg1.position.y=-800;
 
-        startLevel(1,3,10,200);
+        //startLevel(1,3,10,200);
     }
 
     //make the background move
@@ -147,7 +147,9 @@ public class GameUI extends JPanel implements IGameUI {
         gameState.ship.paint(graphics);
         if(gameState.stopGameFlag){
             if(gameState.levelState==LevelState.Lose)
-                paintGameOver(graphics);
+                panelGraph.cardLayout.show(panelGraph.cardPane, "EndGameMenu");
+            panelGraph.gameSaves.addRecord(panelGraph.startGameP.getPName(),gameState.score,gameState.level);
+            panelGraph.endGameP.setScore(Integer.toString(gameState.score));
         }
     }
 
@@ -165,6 +167,10 @@ public class GameUI extends JPanel implements IGameUI {
         gameState.timer = new Timer(tick, new TickListener(this));
         gameState.levelState=LevelState.Started;
         gameState.timer.start();
+        gameObservable.notifyLevelState(gameState.levelState);
+
+    }
+    public void saveGame(){
 
     }
 
@@ -180,6 +186,11 @@ public class GameUI extends JPanel implements IGameUI {
 
     @Override
     public void addGameObserver(Observer gameObserver) {
-        gameState.gameObservable.addObserver(gameObserver);
+        gameObservable.addObserver(gameObserver);
+    }
+
+    @Override
+    public JPanel getPanel() {
+        return this;
     }
 }
