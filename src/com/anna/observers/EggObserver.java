@@ -39,7 +39,7 @@ public class EggObserver implements Observer {
             if (currEgg.intersect(gameState.shots.get(i))) {
                 gameState.shots.get(i).setState(SpriteState.Dead);
                 currEgg.setState(SpriteState.Dying);
-                SoundPlayer.play("C:\\Program Files (x86)\\Microsoft Office\\Office12\\Groove\\Sounds\\Things\\WHOOSH.WAV");
+                SoundPlayer.play("C:\\Program Files (x86)\\Microsoft Office\\Office12\\Groove\\Sounds\\Things\\WHOOSH_1.WAV");
                 gameState.score += 10;
                 break;
             }
