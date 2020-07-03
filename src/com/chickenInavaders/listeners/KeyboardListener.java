@@ -15,6 +15,7 @@ public class KeyboardListener implements KeyListener {
     int leftKey = 37;
     int rightKey = 39;
     int fireKey = 32;
+    int pauseGamekKey =27;
 
     public KeyboardListener(GameUI gameUI) {
         this.gameUI = gameUI;
@@ -46,6 +47,11 @@ public class KeyboardListener implements KeyListener {
             gameUI.moveLeft();
         else if (e.getKeyCode() == rightKey)
             gameUI.moveRight();
+        else if (e.getKeyCode() ==pauseGamekKey )
+        {
+            gameUI.panelGraph.cardLayout.show(gameUI.panelGraph.cardPane, "GamePause");
+            gameUI.pause();
+        }
     }
 
     @Override
