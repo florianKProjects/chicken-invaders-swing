@@ -1,9 +1,8 @@
 package src.com.chickenInavaders.GamePanels;
 
-import src.com.chickenInavaders.Commons;
-import src.com.chickenInavaders.GameButton;
-import src.com.chickenInavaders.ImageDraw;
+import src.com.chickenInavaders.*;
 import src.com.chickenInavaders.LayoutManager;
+import src.com.chickenInavaders.gameui.GameUI;
 import src.com.chickenInavaders.gameui.LevelState;
 
 import javax.swing.*;
@@ -64,7 +63,15 @@ public class EndGameMenu extends JPanel {
         yesB.setForeground(new Color(255, 255, 255));
         yesB.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                yesB.setSelected(!yesB.isSelected());
+                l.gameUI = new GameUI(l);
+                l.gameUI.setName("Game");
+                l.gameUI.addGameObserver(new TestObserver());
+                l.gameUI.startLevel(1, 3, 12, 50);
+                l.cardPane.add("Game", l.gameUI);
+                l.cardLayout.show(l.cardPane, "Game");
+                l.cardPane.transferFocus();
+
+
             }
         });
 
