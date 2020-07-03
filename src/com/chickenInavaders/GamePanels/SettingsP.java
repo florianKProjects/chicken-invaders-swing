@@ -22,29 +22,15 @@ public class SettingsP extends JPanel {
     private boolean settingsChanged = false;
     private ImageDraw BackGround = null;
     private String labels[][] = {{"Player 1", "cell 2 11"},
-            {"Player 2", "cell 7 11"},
-            {"Up", "cell 1 12"},
-            {"Up", "cell 6 12"},
-            {"Down", "cell 1 13"},
-            {"Down", "cell 6 13"},
-            {"Left", "cell 1 14"},
-            {"Left", "cell 6 14"},
-            {"Right", "cell 1 15"},
-            {"Right", "cell 6 15"},
-            {"Fire", "cell 1 16"},
-            {"Fire", "cell 6 16"}};
+            {"Left", "cell 1 12"},
+            {"Right", "cell 1 13"},
+            {"Fire", "cell 1 14"}};
     private String JTextFieldsPlayer1[][] = {
-            {"Up", "cell 2 12"},
-            {"Down", "cell 2 13"},
-            {"Left", "cell 2 14"},
-            {"Right", "cell 2 15"},
-            {"Fire", "cell 2 16"}};
-    private String JTextFieldsPlayer2[][] = {
-            {"Up", "cell 7 12"},
-            {"Down", "cell 7 13"},
-            {"Left", "cell 7 14"},
-            {"Right", "cell 7 15"},
-            {"Fire", "cell 7 16"}};
+            {"Left", "cell 2 12"},
+            {"Right", "cell 2 13"},
+            {"Fire", "cell 2 14"}};
+
+    private String JTextFieldsPlayer2[][] = {};
 
     private HashMap<String, JTextField> JTextKeyFieldsPlayer1 = new HashMap<String, JTextField>();
     private HashMap<String, JTextField> JTextKeyFieldsPlayer2 = new HashMap<String, JTextField>();
@@ -160,40 +146,21 @@ public class SettingsP extends JPanel {
             // if key changed set save flag true and update settings
             JTextKeyFieldsPlayer1.get(TextField[0]).addKeyListener(new KeyListener() {
                 public void keyPressed(KeyEvent keyEvent) {
+
                 }
 
                 public void keyReleased(KeyEvent keyEvent) {
                     String selectedKey = KeyEvent.getKeyText(keyEvent.getKeyCode());
-                    JTextKeyFieldsPlayer1.get(TextField[0]).setText(selectedKey);
-                    settingsFile.setKeyPlayer1(TextField[0].toLowerCase(), Integer.toString(keyEvent.getKeyCode()));
-                    settingsChanged = true;
+                        JTextKeyFieldsPlayer1.get(TextField[0]).setText(selectedKey);
+                        settingsFile.setKeyPlayer1(TextField[0].toLowerCase(), Integer.toString(keyEvent.getKeyCode()));
+                        settingsChanged = true;
+
                 }
 
                 public void keyTyped(KeyEvent keyEvent) {
                 }
             });
             add(JTextKeyFieldsPlayer1.get(TextField[0]), TextField[1]);
-        }
-
-        for (String[] TextField : JTextFieldsPlayer2) {
-            String toCodeToText = KeyEvent.getKeyText(Integer.parseInt(settingsFile.getKeyboardLayoutPlayer2(TextField[0].toLowerCase())));
-            JTextKeyFieldsPlayer2.put(TextField[0], new JTextField(toCodeToText));
-            // if key changed set save flag true and update settings
-            JTextKeyFieldsPlayer2.get(TextField[0]).addKeyListener(new KeyListener() {
-                public void keyPressed(KeyEvent keyEvent) {
-                }
-
-                public void keyReleased(KeyEvent keyEvent) {
-                    String selectedKey = KeyEvent.getKeyText(keyEvent.getKeyCode());
-                    JTextKeyFieldsPlayer2.get(TextField[0]).setText(selectedKey);
-                    settingsFile.setKeyPlayer2(TextField[0].toLowerCase(), Integer.toString(keyEvent.getKeyCode()));
-                    settingsChanged = true;
-                }
-
-                public void keyTyped(KeyEvent keyEvent) {
-                }
-            });
-            add(JTextKeyFieldsPlayer2.get(TextField[0]), TextField[1]);
         }
     }
 
