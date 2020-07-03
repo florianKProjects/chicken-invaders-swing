@@ -1,17 +1,18 @@
-package com.chickenInavaders.GamePanels;
+package src.com.chickenInavaders.GamePanels;
 
-import com.chickenInavaders.GameButton;
-import com.chickenInavaders.ImageDraw;
-import com.chickenInavaders.LayoutManager;
+import src.com.chickenInavaders.GameButton;
+import src.com.chickenInavaders.ImageDraw;
+import src.com.chickenInavaders.LayoutManager;
+import src.com.chickenInavaders.Commons;
+
 import net.miginfocom.swing.MigLayout;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.chickenInavaders.Commons;
-
-public class MainMenu extends JPanel  {
+public class MainMenu extends JPanel {
 
     private GameButton startGameB;
     private GameButton settingsB;
