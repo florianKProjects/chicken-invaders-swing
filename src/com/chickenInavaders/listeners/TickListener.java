@@ -35,7 +35,7 @@ public class TickListener implements ActionListener {
         GameState gameState = gameUI.gameState;
         gameState.shots.forEach(shot->{
             if(shot.getState()==SpriteState.Alive)
-                shot.position.y--;
+                shot.position.y-=2;
         });
     }
 
