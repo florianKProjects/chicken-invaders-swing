@@ -1,61 +1,54 @@
 {
     "Saves": [
         {
-            "Score": 50,
-            "Level": 2,
-            "Id": 1,
-            "Date": "23\/05\/2020",
-            "Name": "Florian"
-        },
-        {
-            "Score": 50,
-            "Level": 3,
+            "Score": 820,
+            "Level": 1,
             "Id": 2,
-            "Date": "23\/05\/2020",
-            "Name": "Haana"
-        },
-        {
-            "Score": 50,
-            "Level": 2,
-            "Id": 3,
-            "Date": "23\/05\/2020",
+            "Date": "04\/07\/2020",
             "Name": "Guy"
         },
         {
-            "Score": 50,
+            "Score": 830,
+            "Level": 1,
+            "Id": 3,
+            "Date": "04\/07\/2020",
+            "Name": "Guy"
+        },
+        {
+            "Score": 810,
             "Level": 1,
             "Id": 4,
-            "Date": "23\/05\/2020",
-            "Name": "Dor"
+            "Date": "04\/07\/2020",
+            "Name": "Guy"
         },
         {
-            "Score": 1,
-            "Level": 2,
+            "Score": 820,
+            "Level": 1,
             "Id": 5,
-            "Date": "20\/20",
-            "Name": "test"
+            "Date": "04\/07\/2020",
+            "Name": "Guy"
         },
         {
-            "Score": 60,
-            "Level": 1,
+            "Score": 2460,
+            "Level": 3,
             "Id": 6,
-            "Date": "12\/06\/2020",
-            "Name": "floiran text"
+            "Date": "04\/07\/2020",
+            "Name": "Guy"
         },
         {
-            "Score": 80,
-            "Level": 1,
+            "Score": 2480,
+            "Level": 3,
             "Id": 7,
-            "Date": "12\/06\/2020",
-            "Name": "floiran text"
+            "Date": "04\/07\/2020",
+            "Name": "Guy"
         },
         {
-            "Score": 60,
-            "Level": 1,
-            "Id": 9,
-            "Date": "17\/06\/2020",
-            "Name": "floiran text"
+            "Score": 2460,
+            "Level": 3,
+            "Id": 8,
+            "Date": "04\/07\/2020",
+            "Name": "Guy"
         }
     ],
-    "lastIndex": 8
+    "lastIndex": 7
 }

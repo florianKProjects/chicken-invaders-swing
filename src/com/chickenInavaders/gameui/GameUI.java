@@ -25,11 +25,11 @@ public class GameUI extends JPanel implements IGameUI {
     public GameObservable gameObservable;
     Bkg bkg1 = new Bkg();
     Bkg bkg2 = new Bkg();
-    private LayoutManager panelGraph;
+    public LayoutManager panelGraph;
 
     public GameUI(LayoutManager l) {
         panelGraph = l;
-        setSize(600, 800);
+        setSize(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
         gameObservable = new GameObservable();
         KeyboardListener keyboardListener = new KeyboardListener(this);
         addKeyListener(keyboardListener);
@@ -65,12 +65,17 @@ public class GameUI extends JPanel implements IGameUI {
             gameState.ship.position.x += 5;
     }
 
+    public void moveUp() {
+        if (gameState.ship.position.y < getHeight())
+            gameState.ship.position.y -= 5;
+    }
+
     public void createEgg() {
         // select random live chicken;
         Object[] liveChickens = gameState.chickens.stream().filter(c -> c.getState() == SpriteState.Alive).toArray();
 
         if (liveChickens.length == 0) {
-            gameState.timer.stop();
+            // gameState.timer.stop();
             gameState.levelState = LevelState.Win;
             gameState.gameObservable.notifyLevelState(LevelState.Win);
             return;
@@ -148,12 +153,41 @@ public class GameUI extends JPanel implements IGameUI {
         paintList(gameState.chickens, graphics);
         paintList(gameState.eggs, graphics);
         paintList(gameState.shots, graphics);
+        graphics.setColor(Color.CYAN);
         gameState.ship.paint(graphics);
+
         if (gameState.stopGameFlag) {
-            if (gameState.levelState == LevelState.Lose)
+            if (gameState.levelState == LevelState.Lose) {
                 panelGraph.cardLayout.show(panelGraph.cardPane, "EndGameMenu");
-            panelGraph.gameSaves.addRecord(panelGraph.startGameP.getPName(), gameState.score, gameState.level);
-            panelGraph.endGameP.setScore(Integer.toString(gameState.score));
+                panelGraph.gameSaves.addRecord(panelGraph.startGameP.getPName(), gameState.score, gameState.level);
+            } else {
+                panelGraph.gameSaves.addRecord(panelGraph.startGameP.getPName(), gameState.score, gameState.level);
+                panelGraph.endGameP.setScore(Integer.toString(gameState.score));
+                gameState.timer.stop();
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                panelGraph.cardLayout.show(panelGraph.cardPane, "MainMenu");
+            }
+        }
+        if (gameState.levelState == LevelState.Win) {
+
+            if (gameState.ship.position.y > -100) {
+                moveUp();
+            } else if (gameState.Gamelevel.maxLevel == gameState.level) {
+                gameState.stopGameFlag = true;
+                Font f = new Font("Dialog", Font.BOLD, 30);
+                graphics.setFont(f);
+                graphics.drawString("YOU SAVE THE PLANET", 100, 250);
+                graphics.drawString("Score : " + gameState.score, 100, 290);
+            } else {
+                int tickNum = gameState.Gamelevel.levelList.get(gameState.level + 1).tick;
+                int eggIntervalNum = gameState.Gamelevel.levelList.get(gameState.level + 1).eggInterval;
+                gameState.timer.stop();
+                changeLevel(gameState.level + 1, gameState.lives, tickNum, eggIntervalNum, gameState.score);
+            }
         }
     }
 
@@ -173,6 +207,11 @@ public class GameUI extends JPanel implements IGameUI {
         gameState.timer.start();
         gameObservable.notifyLevelState(gameState.levelState);
 
+    }
+
+    public void changeLevel(int level, int lives, int tick, int eggInterval, int score) {
+        startLevel(level, lives, tick, eggInterval);
+        gameState.score = score;
     }
 
     public void saveGame() {
@@ -199,4 +238,5 @@ public class GameUI extends JPanel implements IGameUI {
     public JPanel getPanel() {
         return this;
     }
+
 }

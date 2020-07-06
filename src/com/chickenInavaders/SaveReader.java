@@ -3,17 +3,13 @@ package src.com.chickenInavaders;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import src.com.chickenInavaders.GamePanels.StartGameP;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class SaveReader {
     public HashMap<Integer, save> LoadsList;

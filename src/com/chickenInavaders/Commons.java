@@ -84,4 +84,9 @@ public interface Commons {
     String EXPLODE_SOUND = "src/com/chickenInavaders/sounds/EXPLODE.WAV";
     // ------------------------ AboutP ---------------------------
     String END_GAME_BACKGOURND = "src/com/chickenInavaders/images/EngGameMenu.jpg";
+    //-------------------GAME PAUSE P ----------------------------------------
+    String GAME_PAUSE_IMAGE = "src/com/chickenInavaders/images/PausedImage.jpg";
+    String EXIT_IMAGE = "src/com/chickenInavaders/images/Buttons/ExitImg.png";
+    String RESTART_IMG = "src/com/chickenInavaders/images/Buttons/RestartImg.png";
+    String RESUME_IMAGE = "src/com/chickenInavaders/images/Buttons/ResumeImg.png";
 }

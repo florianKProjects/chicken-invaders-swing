@@ -23,38 +23,18 @@ import net.miginfocom.swing.MigLayout;
 public class SettingsP extends JPanel {
 
     private Settings settingsFile;
-    private boolean settingschanged = false;
-    private ImageDraw BackGrond = null;
-    private String labels[][] = { { "Player 1", "cell 2 11" }, { "Player 2", "cell 7 11" }, { "Up", "cell 1 12" },
-            { "Up", "cell 6 12" }, { "Down", "cell 1 13" }, { "Down", "cell 6 13" }, { "Left", "cell 1 14" },
-            { "Left", "cell 6 14" }, { "Right", "cell 1 15" }, { "Right", "cell 6 15" }, { "Fire", "cell 1 16" },
-            { "Fire", "cell 6 16" } };
-    private String JTextFieldsPlayer1[][] = { { "Up", "cell 2 12" }, { "Down", "cell 2 13" }, { "Left", "cell 2 14" },
-            { "Right", "cell 2 15" }, { "Fire", "cell 2 16" } };
-    private String JTextFieldsPlayer2[][] = { { "Up", "cell 7 12" }, { "Down", "cell 7 13" }, { "Left", "cell 7 14" },
-            { "Right", "cell 7 15" }, { "Fire", "cell 7 16" } };
+    private boolean settingsChanged = false;
+    private ImageDraw BackGround = null;
+    private String labels[][] = { { "Player 1", "cell 2 11" }, { "Left", "cell 1 12" }, { "Right", "cell 1 13" },
+            { "Fire", "cell 1 14" } };
+    private String JTextFieldsPlayer1[][] = { { "Left", "cell 2 12" }, { "Right", "cell 2 13" },
+            { "Fire", "cell 2 14" } };
 
-    public class SettingsP extends JPanel {
-
-        private Settings settingsFile;
-        private boolean settingsChanged = false;
-        private ImageDraw BackGround = null;
-        private String labels[][] = { { "Player 1", "cell 2 11" }, { "Player 2", "cell 7 11" }, { "Up", "cell 1 12" },
-                { "Up", "cell 6 12" }, { "Down", "cell 1 13" }, { "Down", "cell 6 13" }, { "Left", "cell 1 14" },
-                { "Left", "cell 6 14" }, { "Right", "cell 1 15" }, { "Right", "cell 6 15" }, { "Fire", "cell 1 16" },
-                { "Fire", "cell 6 16" } };
-        private String JTextFieldsPlayer1[][] = { { "Up", "cell 2 12" }, { "Down", "cell 2 13" },
-                { "Left", "cell 2 14" }, { "Right", "cell 2 15" }, { "Fire", "cell 2 16" } };
-        private String JTextFieldsPlayer2[][] = { { "Up", "cell 7 12" }, { "Down", "cell 7 13" },
-                { "Left", "cell 7 14" }, { "Right", "cell 7 15" }, { "Fire", "cell 7 16" } };>>>>>>>guy
-
-        private HashMap<String, JTextField> JTextKeyFieldsPlayer1 = new HashMap<String, JTextField>();
-        private HashMap<String, JTextField> JTextKeyFieldsPlayer2 = new HashMap<String, JTextField>();
-        private GameButton backB;
-        private GameButton saveB;
-        private JSlider soundSilder;
-        private JSlider soundSlider;
-        private LayoutManager b = null;
+    private HashMap<String, JTextField> JTextKeyFieldsPlayer1 = new HashMap<String, JTextField>();
+    private GameButton backB;
+    private GameButton saveB;
+    private JSlider soundSlider;
+    private LayoutManager b = null;
 
     public SettingsP(LayoutManager b) {
         this.b = b;
@@ -65,68 +45,68 @@ public class SettingsP extends JPanel {
         setUpImages();
         init();
 
-        private void init() {
-            setBorder(new javax.swing.border.CompoundBorder(
-                    new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0), "",
-                            javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM,
-                            new java.awt.Font("Dia\u006cog", java.awt.Font.BOLD, 12), java.awt.Color.red),
-                    getBorder()));
-            addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-                @Override
-                public void propertyChange(java.beans.PropertyChangeEvent e) {
-                    if ("\u0062ord\u0065r".equals(e.getPropertyName()))
-                        throw new RuntimeException();
-                }
-            });
-            setLayout(new MigLayout("fill,hidemode 3,alignx center",
-                    // columns
-                    "[]" + "[fill]" + "[fill]" + "[fill]" + "[fill]" + "[fill]" + "[fill]" + "[fill]" + "[fill]"
-                            + "[fill]" + "[fill]" + "[fill]" + "[fill]",
-                    // rows
-                    "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]"
-                            + "[]" + "[]" + "[]" + "[]" + "[]" + "[]"));
-
-            // -----Sound Slider ------
-            setSoundSlider();
-            // ------Controller Label and TextField -------
-            LabelGenerator();
-            textFieldGenerator();
-
-            // ------ Buttons ---------
-            backB.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    backB.setSelected(!backB.isSelected());
-                    if (settingsChanged)
-                        settingsFile.saveSettings();
-                    b.cardLayout.show(b.cardPane, "MainMenu");
-                }
-            });
-
-            add(soundSlider, "cell 1 6 7 2");
-            add(backB, "cell 0 17 4 2");
-            add(saveB, "cell 6 17 4 2");
-        }
-
-        private void setUpImages() {
-            backB.setRolloverIcon(new ImageIcon(Commons.BACK_HOVER_IMG));
-            saveB.setRolloverIcon(new ImageIcon(Commons.SAVE_HOVER_IMG));
-            BackGround = new ImageDraw(new ImageIcon(Commons.SETTINGS_BACKGROUND_IMG).getImage(), 0, 0,
-                    Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
-        }
-
-        public void paintComponent(Graphics g) {
-            g.drawImage(BackGround.image, BackGround.loc_x, BackGround.loc_y, BackGround.width, BackGround.height,
-                    this);
-        }
-
-        private void LabelGenerator() {
-            for (String[] label : labels) {
-                JLabel labelTemp = new JLabel(label[0]);
-                labelTemp.setFont(new Font("accidental pregnancy", Font.BOLD, 16));
-                labelTemp.setForeground(new Color(145, 191, 237));
-                add(labelTemp, label[1]);
+    private void init() {
+        setBorder(
+                new javax.swing.border.CompoundBorder(
+                        new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0), "",
+                                javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM,
+                                new java.awt.Font("Dia\u006cog", java.awt.Font.BOLD, 12), java.awt.Color.red),
+                        getBorder()));
+        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            @Override
+            public void propertyChange(java.beans.PropertyChangeEvent e) {
+                if ("\u0062ord\u0065r".equals(e.getPropertyName()))
+                    throw new RuntimeException();
             }
+        });
+        setLayout(new MigLayout("fill,hidemode 3,alignx center",
+                // columns
+                "[]" + "[fill]" + "[fill]" + "[fill]" + "[fill]" + "[fill]" + "[fill]" + "[fill]" + "[fill]" + "[fill]"
+                        + "[fill]" + "[fill]" + "[fill]",
+                // rows
+                "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]" + "[]"
+                        + "[]" + "[]" + "[]" + "[]" + "[]"));
+
+        // -----Sound Slider ------
+        setSoundSlider();
+        // ------Controller Label and TextField -------
+        LabelGenerator();
+        textFieldGenerator();
+
+        // ------ Buttons ---------
+        backB.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                backB.setSelected(!backB.isSelected());
+                if (settingsChanged)
+                    settingsFile.saveSettings();
+                b.cardLayout.show(b.cardPane, "MainMenu");
+            }
+        });
+
+        add(soundSlider, "cell 1 6 7 2");
+        add(backB, "cell 0 17 4 2");
+        add(saveB, "cell 6 17 4 2");
+    }
+
+    private void setUpImages() {
+        backB.setRolloverIcon(new ImageIcon(Commons.BACK_HOVER_IMG));
+        saveB.setRolloverIcon(new ImageIcon(Commons.SAVE_HOVER_IMG));
+        BackGround = new ImageDraw(new ImageIcon(Commons.SETTINGS_BACKGROUND_IMG).getImage(), 0, 0, Commons.BOARD_WIDTH,
+                Commons.BOARD_HEIGHT);
+    }
+
+    public void paintComponent(Graphics g) {
+        g.drawImage(BackGround.image, BackGround.loc_x, BackGround.loc_y, BackGround.width, BackGround.height, this);
+    }
+
+    private void LabelGenerator() {
+        for (String[] label : labels) {
+            JLabel labelTemp = new JLabel(label[0]);
+            labelTemp.setFont(new Font("accidental pregnancy", Font.BOLD, 16));
+            labelTemp.setForeground(new Color(145, 191, 237));
+            add(labelTemp, label[1]);
         }
+    }
 
     private void textFieldGenerator() {
         // exp  {"Up","cell 2 12"},
@@ -136,6 +116,7 @@ public class SettingsP extends JPanel {
             // if key changed set save flag true and update settings
             JTextKeyFieldsPlayer1.get(TextField[0]).addKeyListener(new KeyListener() {
                 public void keyPressed(KeyEvent keyEvent) {
+
                 }
 
                 public void keyReleased(KeyEvent keyEvent) {
@@ -143,6 +124,7 @@ public class SettingsP extends JPanel {
                     JTextKeyFieldsPlayer1.get(TextField[0]).setText(selectedKey);
                     settingsFile.setKeyPlayer1(TextField[0].toLowerCase(), Integer.toString(keyEvent.getKeyCode()));
                     settingsChanged = true;
+
                 }
 
                 public void keyTyped(KeyEvent keyEvent) {
@@ -151,28 +133,12 @@ public class SettingsP extends JPanel {
             add(JTextKeyFieldsPlayer1.get(TextField[0]), TextField[1]);
         }
 
-        for (String[] TextField : JTextFieldsPlayer2) {
-            String toCodeToText = KeyEvent.getKeyText(Integer.parseInt(settingsFile.getKeyboardLayoutPlayer2(TextField[0].toLowerCase())));
-            JTextKeyFieldsPlayer2.put(TextField[0], new JTextField(toCodeToText));
-            // if key changed set save flag true and update settings
-            JTextKeyFieldsPlayer2.get(TextField[0]).addKeyListener(new KeyListener() {
+    public void keyTyped(KeyEvent keyEvent) {
+    }
 
-        public void keyPressed(KeyEvent keyEvent) {
-        }
-
-        public void keyReleased(KeyEvent keyEvent) {
-            String selectedKey = KeyEvent.getKeyText(keyEvent.getKeyCode());
-            JTextKeyFieldsPlayer2.get(TextField[0]).setText(selectedKey);
-            settingsFile.setKeyPlayer2(TextField[0].toLowerCase(), Integer.toString(keyEvent.getKeyCode()));
-            settingsChanged = true;
-        }
-
-        public void keyTyped(KeyEvent keyEvent) {
-        }
     });
 
-    add(JTextKeyFieldsPlayer2.get(TextField[0]), TextField[1]);
-        }
+    add(JTextKeyFieldsPlayer2.get(TextField[0]),TextField[1]);}
 
     }
 

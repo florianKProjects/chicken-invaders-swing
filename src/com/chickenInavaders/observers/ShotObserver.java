@@ -38,7 +38,6 @@ public class ShotObserver  implements Observer {
     private void checkIfLevelCompleted(){
         Object[] liveChickens = gameState.chickens.stream().filter(c->c.getState() == SpriteState.Alive).toArray();
         if(liveChickens.length == 0){
-            gameState.stopGameFlag=true;
             gameState.levelState=LevelState.Win;
         }
     }

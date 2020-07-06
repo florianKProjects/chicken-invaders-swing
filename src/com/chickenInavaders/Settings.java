@@ -82,18 +82,9 @@ public class Settings {
         return keyboardLayoutPlayer1.get(Key);
     }
 
-    public String getKeyboardLayoutPlayer2(String Key) {
-        return keyboardLayoutPlayer2.get(Key);
-    }
-
     public void setKeyPlayer1(String Key, String value) {
         keyboardLayoutPlayer1.replace(Key, value);
         ((JSONObject) ((JSONObject) jsonObject.get("controls")).get("player_1")).put(Key, value);
-    }
-
-    public void setKeyPlayer2(String Key, String value) {
-        keyboardLayoutPlayer2.replace(Key, value);
-        ((JSONObject) ((JSONObject) jsonObject.get("controls")).get("player_2")).put(Key, value);
     }
 
     public static Settings getInstance() {
