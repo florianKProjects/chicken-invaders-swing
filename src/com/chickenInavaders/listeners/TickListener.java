@@ -10,49 +10,50 @@ import java.awt.event.ActionListener;
 public class TickListener implements ActionListener {
     GameUI gameUI;
 
-    public TickListener(GameUI gameUI){
+    public TickListener(GameUI gameUI) {
         this.gameUI = gameUI;
     }
 
-    private void moveEggs(){
+    private void moveEggs() {
         GameState gameState = gameUI.gameState;
-        gameState.eggs.forEach(egg->{
-            if(egg.getState()== SpriteState.Alive)
+        gameState.eggs.forEach(egg -> {
+            if (egg.getState() == SpriteState.Alive)
                 egg.position.y++;
         });
     }
 
-    private void createEgg(){
+    private void createEgg() {
         GameState gameState = gameUI.gameState;
         gameState.eggFrames--;
-        if(gameState.eggFrames==0){
+        if (gameState.eggFrames == 0) {
             gameState.eggFrames = gameState.eggInterval;
             gameUI.createEgg();
         }
     }
 
-    private void moveShots(){
+    private void moveShots() {
         GameState gameState = gameUI.gameState;
-        gameState.shots.forEach(shot->{
-            if(shot.getState()==SpriteState.Alive)
-                shot.position.y--;
+        gameState.shots.forEach(shot -> {
+            if (shot.getState() == SpriteState.Alive)
+                shot.position.y -= 2;
         });
     }
 
-    private void moveChickens(){
+    private void moveChickens() {
         int step = 1;
-        int side =  gameUI.getWidth();
+        int side = gameUI.getWidth();
         GameState gameState = gameUI.gameState;
-        gameState.chickens.forEach(chickens->{
-            if(chickens.position.x == -60)
-                chickens.position.x += side+60;
-            if(chickens.position.x == 660)
-                chickens.position.x -= (side+120);
+        gameState.chickens.forEach(chickens -> {
+            if (chickens.position.x == -60)
+                chickens.position.x += side + 60;
+            if (chickens.position.x == 660)
+                chickens.position.x -= (side + 120);
         });
 
-        for(int i = 0 ;i < 40; i++){
-            if(i % 8 == 0) step = -step;
-            gameState.chickens.get(i).position.x+=step;
+        for (int i = 0; i < 40; i++) {
+            if (i % 8 == 0)
+                step = -step;
+            gameState.chickens.get(i).position.x += step;
         }
     }
 

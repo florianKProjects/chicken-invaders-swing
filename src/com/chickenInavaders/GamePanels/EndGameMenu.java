@@ -4,7 +4,6 @@ import src.com.chickenInavaders.Commons;
 import src.com.chickenInavaders.GameButton;
 import src.com.chickenInavaders.ImageDraw;
 import src.com.chickenInavaders.LayoutManager;
-import src.com.chickenInavaders.gameui.LevelState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,24 +11,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EndGameMenu extends JPanel {
-    private ImageDraw BackGrond;
+    private ImageDraw BackGround;
     private LayoutManager l;
-    private  JLabel scoreLabel;
-    private String gmaeScore;
+    private JLabel scoreLabel;
+    private String gameScore;
     private GameButton yesB;
     private GameButton noB;
-    public EndGameMenu(LayoutManager l){
+
+    public EndGameMenu(LayoutManager l) {
         setLayout(null);
         this.l = l;
-        gmaeScore= "";
+        gameScore = "";
         scoreLabel = new JLabel();
-        yesB =new GameButton("");
-        noB =new GameButton("");
+        yesB = new GameButton("");
+        noB = new GameButton("");
         init();
 
     }
+
     private void init() {
-        setUpScoreLable();
+        setUpScoreLabel();
         setUpImages();
         setUpGameButton();
         add(scoreLabel);
@@ -37,36 +38,40 @@ public class EndGameMenu extends JPanel {
         add(noB);
 
     }
-    private void setUpImages(){
-        BackGrond = new ImageDraw(new ImageIcon(Commons.END_GAME_BACKGOURND).getImage(),0,0,Commons.BOARD_WIDTH,Commons.BOARD_HEIGHT);
+
+    private void setUpImages() {
+        BackGround = new ImageDraw(new ImageIcon(Commons.END_GAME_BACKGOURND).getImage(), 0, 0, Commons.BOARD_WIDTH,
+                Commons.BOARD_HEIGHT);
     }
 
     public void paintComponent(Graphics g) {
-        g.drawImage(BackGrond.image, BackGrond.loc_x, BackGrond.loc_y, BackGrond.width, BackGrond.height, this);
+        g.drawImage(BackGround.image, BackGround.loc_x, BackGround.loc_y, BackGround.width, BackGround.height, this);
     }
-    private void setUpScoreLable(){
-        scoreLabel.setBounds(268, 320,100,100);
+
+    private void setUpScoreLabel() {
+        scoreLabel.setBounds(268, 320, 100, 100);
         scoreLabel.setFont(new Font("accidental pregnancy", Font.BOLD, 35));
         scoreLabel.setForeground(new Color(145, 191, 237));
         setScore("2000");
 
     }
-    private void setUpGameButton(){
+
+    private void setUpGameButton() {
         yesB.setText("Yes");
-        yesB.setBounds(315, 470,100,100);
+        yesB.setBounds(315, 470, 100, 100);
         yesB.setFont(new Font("accidental pregnancy", Font.BOLD, 30));
         yesB.setForeground(new Color(255, 255, 255));
-        yesB.addActionListener(new ActionListener(){
+        yesB.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 yesB.setSelected(!yesB.isSelected());
             }
         });
 
         noB.setText("No");
-        noB.setBounds(200, 470,100,100);
+        noB.setBounds(200, 470, 100, 100);
         noB.setFont(new Font("accidental pregnancy", Font.BOLD, 30));
         noB.setForeground(new Color(255, 255, 255));
-        noB.addActionListener(new ActionListener(){
+        noB.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 noB.setSelected(!yesB.isSelected());
                 l.startGameP.loadSaves();
@@ -75,23 +80,20 @@ public class EndGameMenu extends JPanel {
         });
     }
 
-
-    public void setScore(String score){
-        gmaeScore = score;
+    public void setScore(String score) {
+        gameScore = score;
         scoreLabel.setText(score);
     }
-    public void gameOver(){
+
+    public void gameOver() {
 
     }
-    public String getScore(){
-        return gmaeScore;
+
+    public String getScore() {
+        return gameScore;
     }
 
-
-
-    //public EndGameMenu(){}
-    //private void restartGame(){}
-    //private void returnToMainMenu(){}
-
-
+    // public EndGameMenu(){}
+    // private void restartGame(){}
+    // private void returnToMainMenu(){}
 }

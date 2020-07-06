@@ -10,15 +10,13 @@ public class TestFrame extends JFrame {
     IGameUI gameUI;
 
     TestFrame() {
-        setSize(600, 800);
         setLayout(new BorderLayout());
-
         gameUI = new GameUI(new LayoutManager());
         add((GameUI) gameUI, BorderLayout.CENTER);
         gameUI.addGameObserver(new TestObserver());
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        gameUI.startLevel(1, 3, 10, 200);
+        setSize(600, 800);
 
     }
     /*
