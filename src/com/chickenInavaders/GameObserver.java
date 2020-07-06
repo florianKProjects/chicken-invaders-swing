@@ -1,6 +1,6 @@
 package src.com.chickenInavaders;
 
-import src.com.chickenInavaders.gameui.LevelState;
+import src.com.chickenInavaders.model.LevelState;
 
 import java.util.Observable;
 import java.util.Observer;
