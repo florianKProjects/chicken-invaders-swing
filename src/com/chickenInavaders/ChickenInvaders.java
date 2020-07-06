@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 */
 
+import javax.swing.*;
+
 public class ChickenInvaders {
     public LayoutManager panelManager;
 
@@ -19,7 +21,10 @@ public class ChickenInvaders {
     }
 
     public static void main(String[] args) {
-        ChickenInvaders mainFrame = new ChickenInvaders();
+        SwingUtilities.invokeLater(() -> {
+            ChickenInvaders mainFrame = new ChickenInvaders();
+        });
+
     }
 }
 
