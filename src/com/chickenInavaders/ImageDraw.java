@@ -3,7 +3,7 @@ package src.com.chickenInavaders;
 import java.awt.*;
 
 public class ImageDraw {
-    public String sourceImag;
+    public String sourceImage;
     public Image image;
     public int loc_x;
     public int loc_y;
@@ -11,7 +11,7 @@ public class ImageDraw {
     public int height;
 
     public ImageDraw(String source ,Image image,int loc_x,int loc_y,int width,int height){
-        this.sourceImag = source;
+        this.sourceImage = source;
         this.image = image;
         this.width = width;
         this.height = height;
