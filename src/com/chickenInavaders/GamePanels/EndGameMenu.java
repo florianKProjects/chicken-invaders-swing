@@ -1,9 +1,8 @@
 package src.com.chickenInavaders.GamePanels;
 
-import src.com.chickenInavaders.Commons;
-import src.com.chickenInavaders.GameButton;
-import src.com.chickenInavaders.ImageDraw;
+import src.com.chickenInavaders.*;
 import src.com.chickenInavaders.LayoutManager;
+import src.com.chickenInavaders.gameui.GameUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,17 +10,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EndGameMenu extends JPanel {
-    private ImageDraw BackGround;
+    private ImageDraw BackGrond;
     private LayoutManager l;
     private JLabel scoreLabel;
-    private String gameScore;
+    private String gmaeScore;
     private GameButton yesB;
     private GameButton noB;
 
     public EndGameMenu(LayoutManager l) {
         setLayout(null);
         this.l = l;
-        gameScore = "";
+        gmaeScore = "";
         scoreLabel = new JLabel();
         yesB = new GameButton("");
         noB = new GameButton("");
@@ -30,7 +29,7 @@ public class EndGameMenu extends JPanel {
     }
 
     private void init() {
-        setUpScoreLabel();
+        setUpScoreLable();
         setUpImages();
         setUpGameButton();
         add(scoreLabel);
@@ -40,14 +39,14 @@ public class EndGameMenu extends JPanel {
     }
 
     private void setUpImages() {
-        BackGround = new ImageDraw(new ImageIcon(Commons.END_GAME_BACKGOURND).getImage(), 0, 0, Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
+        BackGrond = new ImageDraw(new ImageIcon(Commons.END_GAME_BACKGOURND).getImage(), 0, 0, Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
     }
 
     public void paintComponent(Graphics g) {
-        g.drawImage(BackGround.image, BackGround.loc_x, BackGround.loc_y, BackGround.width, BackGround.height, this);
+        g.drawImage(BackGrond.image, BackGrond.loc_x, BackGrond.loc_y, BackGrond.width, BackGrond.height, this);
     }
 
-    private void setUpScoreLabel() {
+    private void setUpScoreLable() {
         scoreLabel.setBounds(268, 320, 100, 100);
         scoreLabel.setFont(new Font("accidental pregnancy", Font.BOLD, 35));
         scoreLabel.setForeground(new Color(145, 191, 237));
@@ -62,7 +61,15 @@ public class EndGameMenu extends JPanel {
         yesB.setForeground(new Color(255, 255, 255));
         yesB.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                yesB.setSelected(!yesB.isSelected());
+                l.gameUI = new GameUI(l);
+                l.gameUI.setName("Game");
+                l.gameUI.addGameObserver(new GameObserver());
+                l.gameUI.startLevel(1, 3, 12, 50);
+                l.cardPane.add("Game", l.gameUI);
+                l.cardLayout.show(l.cardPane, "Game");
+                l.cardPane.transferFocus();
+
+
             }
         });
 
@@ -79,9 +86,8 @@ public class EndGameMenu extends JPanel {
         });
     }
 
-
     public void setScore(String score) {
-        gameScore = score;
+        gmaeScore = score;
         scoreLabel.setText(score);
     }
 
@@ -90,10 +96,11 @@ public class EndGameMenu extends JPanel {
     }
 
     public String getScore() {
-        return gameScore;
+        return gmaeScore;
     }
 
-    //public EndGameMenu(){}
-    //private void restartGame(){}
-    //private void returnToMainMenu(){}
+    // public EndGameMenu(){}
+    // private void restartGame(){}
+    // private void returnToMainMenu(){}
+
 }

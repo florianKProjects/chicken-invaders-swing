@@ -32,6 +32,9 @@ public class EggObserver implements Observer {
             return;
         }
         Egg currEgg = (Egg) o;
+        if(gameState.levelState == LevelState.Win){
+            currEgg.setState(SpriteState.Dying);
+        }
         if (currEgg.getState() != SpriteState.Alive || currEgg.position.y >= gameState.gamePanelHeight) {
             gameState.eggs.remove(currEgg);
             return;

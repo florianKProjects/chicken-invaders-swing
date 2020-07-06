@@ -1,4 +1,5 @@
 package src.com.chickenInavaders.gameui;
+import src.com.chickenInavaders.Level;
 import src.com.chickenInavaders.observers.GameObservable;
 import src.com.chickenInavaders.sprites.Chicken;
 import src.com.chickenInavaders.sprites.Ship;
@@ -20,6 +21,7 @@ public class GameState {
     public List<Sprite> shots;
     public Ship ship;
     public int level;
+    public Level Gamelevel = Level.getInstance();
     public int lives;
     public int score;
     public int gamePanelHeight;

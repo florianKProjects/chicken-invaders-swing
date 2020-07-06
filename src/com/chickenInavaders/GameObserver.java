@@ -5,7 +5,7 @@ import src.com.chickenInavaders.gameui.LevelState;
 import java.util.Observable;
 import java.util.Observer;
 
-public class TestObserver implements Observer {
+public class GameObserver implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         LevelState levelState = (LevelState)arg;
