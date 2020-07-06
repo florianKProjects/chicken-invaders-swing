@@ -14,8 +14,8 @@ public class KeyboardListener implements KeyListener {
     private int rightKey = 39;
     private int fireKey = 32;
     private int pauseGamekKey = 27;
-    private boolean isFireKeyUp = true;
     private long lastTime = 0;
+    private  int shotsInterval = 700;
 
     public KeyboardListener(GameUI gameUI) {
         this.gameUI = gameUI;
@@ -39,11 +39,11 @@ public class KeyboardListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == fireKey &&
-                isFireKeyUp == true &&
-                (System.currentTimeMillis() - lastTime) > 200) {
-            gameUI.createShot();
-            isFireKeyUp = false;
+        if (e.getKeyCode() == fireKey){
+            if(System.currentTimeMillis() - lastTime > shotsInterval) {
+                gameUI.createShot();
+                lastTime = System.currentTimeMillis();
+            }
         } else if (e.getKeyCode() == leftKey)
             gameUI.moveLeft();
         else if (e.getKeyCode() == rightKey)
@@ -56,9 +56,6 @@ public class KeyboardListener implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == fireKey) {
-            isFireKeyUp = true;
-            lastTime = System.currentTimeMillis();
-        }
+
     }
 }
