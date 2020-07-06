@@ -172,6 +172,7 @@ public class GameUI extends JPanel implements IGameUI {
                 panelGraph.cardLayout.show(panelGraph.cardPane, "MainMenu");
             }
         }
+
         if (gameState.levelState == LevelState.Win)
         {
             if (gameState.ship.position.y > -100 )

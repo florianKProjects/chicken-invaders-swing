@@ -1,1 +1,54 @@
-{"Saves":[{"Score":50,"Level":2,"Id":1,"Date":"23\/05\/2020","Name":"Florian"},{"Score":50,"Level":3,"Id":2,"Date":"23\/05\/2020","Name":"Haana"},{"Score":50,"Level":2,"Id":3,"Date":"23\/05\/2020","Name":"Guy"},{"Score":50,"Level":1,"Id":4,"Date":"23\/05\/2020","Name":"Dor"},{"Score":1,"Level":2,"Id":5,"Date":"20\/20","Name":"test"},{"Score":60,"Level":1,"Id":6,"Date":"12\/06\/2020","Name":"floiran text"},{"Score":80,"Level":1,"Id":7,"Date":"12\/06\/2020","Name":"floiran text"},{"Score":60,"Level":1,"Id":9,"Date":"14\/06\/2020","Name":"Guy"},{"Score":80,"Level":1,"Id":11,"Date":"14\/06\/2020","Name":"test"}],"lastIndex":10}
+{
+  "lastIndex": 7,
+  "Saves": [
+    {
+      "Score": 50,
+      "Date": "23/05/2020",
+      "Level": 2,
+      "Id": 1,
+      "Name": "Florian"
+    },
+    {
+      "Score": 50,
+      "Date": "23/05/2020",
+      "Level": 3,
+      "Id": 2,
+      "Name": "Haana"
+    },
+    {
+      "Score": 50,
+      "Date": "23/05/2020",
+      "Level": 2,
+      "Id": 3,
+      "Name": "Guy"
+    },
+    {
+      "Score": 50,
+      "Date": "23/05/2020",
+      "Level": 1,
+      "Id": 4,
+      "Name": "Dor"
+    },
+    {
+      "Score": 1,
+      "Level": 2,
+      "Date": "20/20",
+      "Id": 5,
+      "Name": "test"
+    },
+    {
+      "Score": 60,
+      "Level": 1,
+      "Date": "12/06/2020",
+      "Id": 6,
+      "Name": "floiran text"
+    },
+    {
+      "Score": 80,
+      "Level": 1,
+      "Date": "12/06/2020",
+      "Id": 7,
+      "Name": "floiran text"
+    }
+  ]
+}
