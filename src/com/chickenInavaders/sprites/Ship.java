@@ -7,12 +7,10 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class Ship extends Sprite {
-    final static Image alive = new ImageIcon("src/com/chickenInavaders/images/ship.png").getImage();
-    final static Image boom = new ImageIcon("src/com/chickenInavaders/images/boom.png").getImage();
     private final static Dictionary<SpriteState,Image> shipImages = new Hashtable<SpriteState, Image>(){
         {
-            put(SpriteState.Alive,alive);
-            put(SpriteState.Dying,boom);
+            put(SpriteState.Alive,new ImageIcon("src/com/chickenInavaders/images/ship.png").getImage());
+            put(SpriteState.Dying,new ImageIcon("src/com/chickenInavaders/images/boom.png").getImage());
         }
     };
 
