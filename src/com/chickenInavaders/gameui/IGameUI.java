@@ -8,5 +8,4 @@ public interface IGameUI {
     void resume();
     void pause();
     void addGameObserver(Observer gameObserver);
-    JPanel getPanel();
 }

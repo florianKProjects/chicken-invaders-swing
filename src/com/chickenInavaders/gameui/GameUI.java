@@ -35,8 +35,6 @@ public class GameUI extends JPanel implements IGameUI {
         addKeyListener(keyboardListener);
 
         bkg1.position.y = -800;
-
-        // startLevel(1,3,10,200);
     }
 
     // make the background move
@@ -214,10 +212,6 @@ public class GameUI extends JPanel implements IGameUI {
         gameState.score = score;
     }
 
-    public void saveGame() {
-
-    }
-
     @Override
     public void resume() {
         if (gameState.timer != null)
@@ -234,9 +228,5 @@ public class GameUI extends JPanel implements IGameUI {
         gameObservable.addObserver(gameObserver);
     }
 
-    @Override
-    public JPanel getPanel() {
-        return this;
-    }
 
 }
