@@ -54,8 +54,8 @@ public class SaveReader {
     public void addRecord(String name, int score, int level, String date) {
         LoadsList.put(++index, new save(index, name, score, level, date));
         SaveFile.put("lastIndex", index);
-        HashMap<String, Object> newSave = new HashMap<String, Object>();
-        newSave.put("Id", ++index);
+        JSONObject newSave = new JSONObject();
+        newSave.put("Id", index);
         newSave.put("Name", name);
         newSave.put("Score", score);
         newSave.put("Level", level);
@@ -74,7 +74,38 @@ public class SaveReader {
         DateTimeFormatter gameDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         addRecord(name, score, level, gameDate.format(now));
     }
-
+    public void updateRecord(int id,String updateFild, Object newValue){
+        switch(updateFild.toLowerCase()){
+            case "name":
+                LoadsList.get(id).name = (String)newValue;
+                break;
+            case "score":
+                LoadsList.get(id).score = (int)newValue;
+                break;
+            case "level":
+                LoadsList.get(id).level = (int)newValue;
+                break;
+        }
+        JSONArray companyList = (JSONArray) SaveFile.get("Saves");
+        companyList.forEach(item -> {
+            JSONObject obj2 = (JSONObject) item;
+            if (Integer.parseInt(obj2.get("Id").toString())==(id))
+            {
+                obj2.put(updateFild,newValue);
+            };
+        });
+        SaveFile.put("Saves",companyList);
+        try (FileWriter file = new FileWriter(Commons.SAVES_FILE)) {
+            file.write(SaveFile.toString());
+            if (Commons.IS_DEBUG)
+                System.out.println("Successfully updated json Saves file");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public int getLastIndex(){
+        return index;
+    }
     private JSONObject jsonFormatFromStirng(String s) {
         return null;
     }
