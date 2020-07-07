@@ -1,6 +1,8 @@
 package src.com.chickenInavaders.GamePanels;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
@@ -14,7 +16,8 @@ import src.com.chickenInavaders.gameui.GameUI;
 
 public class StartGameP extends JPanel {
 
-    private String[][] ButtonConfi = { { "RedP1", "205,240,55,60", Commons.RED_SHIP, Commons.RED_SHIP },
+    private String[][] ButtonConfi = {
+            { "RedP1", "205,240,55,60", Commons.RED_SHIP, Commons.RED_SHIP },
             { "RedP2", "205,240,55,60", Commons.RED_SHIP, Commons.RED_SHIP },
             { "BlueP1", "290,240,55,60", Commons.BLUE_SHIP, Commons.BLUE_SHIP },
             { "BlueP2", "290,240,55,60", Commons.BLUE_SHIP, Commons.BLUE_SHIP },
@@ -22,7 +25,8 @@ public class StartGameP extends JPanel {
             { "Level.2", "350,525,85,65", Commons.LEVEL_2, Commons.LEVEL_2_HOVER },
             { "Level.3", "470,525,85,65", Commons.LEVEL_3, Commons.LEVEL_3_HOVER },
             { "Back", "15,680,117,60", Commons.BACK_IMG, Commons.BACK_HOVER_IMG },
-            { "Start", "355,680,223,70", Commons.START_IMG, Commons.START_HOVER_IMG } };
+            { "Start", "355,680,223,70", Commons.START_IMG, Commons.START_HOVER_IMG }
+    };
 
     private HashMap<String, GameButton> ButtonList;
     private JLabel BackGroundP;
@@ -35,6 +39,7 @@ public class StartGameP extends JPanel {
     private LayoutManager panelGraph;
     private String palyes;
     private int selectedLevel;
+    public String Playerid;
 
     public StartGameP(LayoutManager b) {
         panelGraph = b;
@@ -45,7 +50,7 @@ public class StartGameP extends JPanel {
         scrollPane1 = new JScrollPane();
         gameLoadText = new DefaultListModel();
         p1Name = new JTextField("");
-
+        Playerid = null;
         init();
 
     }
@@ -55,6 +60,20 @@ public class StartGameP extends JPanel {
         BackGroundP.setBounds(0, 0, Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
         BackGroundP.setIcon(new ImageIcon(Commons.BACKGROUND_ONE_PLAYER_IMG));
         p1Name.setBounds(225, 200, 105, 35);
+        p1Name.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                if (Playerid != null )
+                    if(!p1Name.getText().equals(panelGraph.gameSaves.LoadsList.get(Integer.parseInt(Playerid)).name))
+                    resetValue();
+
+            }
+        });
         setLayout(null);
         // Load
         playersAmount();
@@ -69,24 +88,19 @@ public class StartGameP extends JPanel {
             ButtonList.get("Start").setSelected(!ButtonList.get("Start").isSelected());
             panelGraph.gameUI = new GameUI(panelGraph);
             panelGraph.gameUI.setName("Game");
-            panelGraph.gameUI.addGameObserver(new GameObserver());
-            panelGraph.gameUI.startLevel(selectedLevel, 3, levles.levelList.get(selectedLevel).tick,
-                    levles.levelList.get(selectedLevel).eggInterval);
+            panelGraph.gameUI.addGameObserver(new GameObserver(panelGraph));
+            panelGraph.gameUI.startLevel(selectedLevel, 3, levles.levelList.get(selectedLevel).tick, levles.levelList.get(selectedLevel).eggInterval);
             panelGraph.cardPane.add("Game", panelGraph.gameUI);
             panelGraph.cardLayout.show(panelGraph.cardPane, "Game");
             panelGraph.cardPane.transferFocus();
             if (Commons.IS_DEBUG)
-                System.out.println("Starts game at level :" + selectedLevel + "\n player name : " + p1Name.getText());
+                System.out.println("Starts game at level :" + selectedLevel + "\n player name : " + p1Name.getText() + "\n Playerid : "+Playerid);
 
         });
         // lock the level at start
-        ButtonList.get("Level.2").setEnabled(false);
-        ButtonList.get("Level.2").ChangeImage(Commons.LEVEL_2_LOCK);
-        ButtonList.get("Level.2").setRolloverIcon(null);
-        ButtonList.get("Level.3").setEnabled(false);
-        ButtonList.get("Level.3").ChangeImage(Commons.LEVEL_3_LOCK);
 
-        add(p1Name);
+        resetValue();
+
         add(p1Name);
         add(scrollPane1);
         // add(playersComboBox);
@@ -120,7 +134,7 @@ public class StartGameP extends JPanel {
         // need to get the saves from json
         gameLoadText = new DefaultListModel();
         panelGraph.gameSaves.LoadsList.forEach((key, value) -> {
-            gameLoadText.addElement(value.id + "." + value.name + ", level:" + value.level + ", " + value.date);
+            gameLoadText.addElement(value.id + "." + value.name + ", level:" + value.level + ", " + value.date + ",Score : "+ value.score);
         });
 
         LoadList = new JList(gameLoadText);
@@ -128,7 +142,7 @@ public class StartGameP extends JPanel {
         LoadList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent evt) {
                 String temp2 = (String) LoadList.getSelectedValue();
-                String Playerid = temp2.split("\\.")[0];
+                Playerid = temp2.split("\\.")[0];
                 buttonLevelChecker(Integer.parseInt(Playerid));
                 setP1Name(Integer.parseInt(Playerid));
             }
@@ -136,7 +150,7 @@ public class StartGameP extends JPanel {
         scrollPane1.setViewportView(LoadList);
         scrollPane1.setOpaque(false);
         scrollPane1.getViewport().setOpaque(false);
-        scrollPane1.setBounds(25, 400, 250, 125);
+        scrollPane1.setBounds(25, 400, 280, 125);
     }
 
     private void playersAmount() {
@@ -175,10 +189,7 @@ public class StartGameP extends JPanel {
     private void setP1Name(int id) {
         String pName = panelGraph.gameSaves.LoadsList.get(id).name;
         p1Name.setText(pName);
-    }<<<<<<<HEAD=======
-
-    >>>>>>>guy
-
+    }
     private void changePlayerPanel(int p_Amount) {
         ButtonList.get("RedP2").setIcon(null);
         ButtonList.get("BlueP2").setIcon(null);
@@ -209,5 +220,17 @@ public class StartGameP extends JPanel {
 
     public String getPName() {
         return p1Name.getText();
+    }
+    public void setPlayerid(String num){
+        Playerid = num;
+    }
+    public void  resetValue(){
+        ButtonList.get("Level.2").setEnabled(false);
+        ButtonList.get("Level.2").ChangeImage(Commons.LEVEL_2_LOCK);
+        ButtonList.get("Level.2").setRolloverIcon(null);
+        ButtonList.get("Level.3").setEnabled(false);
+        ButtonList.get("Level.3").ChangeImage(Commons.LEVEL_3_LOCK);
+        selectedLevel = 1 ;
+        Playerid = null;
     }
 }
