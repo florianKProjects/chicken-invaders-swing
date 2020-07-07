@@ -58,7 +58,7 @@ public class GamePauseP  extends JPanel {
                 int lives = l.gameUI.gameState.lives;
                 l.gameUI = new GameUI(l);
                 l.gameUI.setName("Game");
-                l.gameUI.addGameObserver(new GameObserver());
+                l.gameUI.addGameObserver(new GameObserver(l));
                 l.gameUI.startLevel(level, lives, 12, 50);
                 l.cardPane.add("Game", l.gameUI);
                 l.cardLayout.show(l.cardPane, "Game");
