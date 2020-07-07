@@ -16,6 +16,7 @@ public class EndGameMenu extends JPanel {
     private String gmaeScore;
     private GameButton yesB;
     private GameButton noB;
+    private Level levles = Level.getInstance();
 
     public EndGameMenu(LayoutManager l) {
         setLayout(null);
@@ -51,8 +52,7 @@ public class EndGameMenu extends JPanel {
         scoreLabel.setBounds(268, 320, 100, 100);
         scoreLabel.setFont(new Font("accidental pregnancy", Font.BOLD, 35));
         scoreLabel.setForeground(new Color(145, 191, 237));
-        setScore("2000");
-
+        setScore("0");
     }
 
     private void setUpGameButton() {
@@ -64,9 +64,10 @@ public class EndGameMenu extends JPanel {
             public void actionPerformed(ActionEvent evt) {
                 l.gameUI = new GameUI(l);
                 l.gameUI.setName("Game");
-                l.gameUI.addGameObserver(new GameObserver());
-                l.gameUI.startLevel(1, 3, 12, 50);
+                l.gameUI.addGameObserver(new GameObserver(l));
+                l.gameUI.startLevel(1, 3, levles.levelList.get(1).tick, levles.levelList.get(1).eggInterval);
                 l.cardPane.add("Game", l.gameUI);
+                l.startGameP.setPlayerid(Integer.toString(l.gameSaves.getLastIndex()));
                 l.cardLayout.show(l.cardPane, "Game");
                 l.cardPane.transferFocus();
 
@@ -80,7 +81,6 @@ public class EndGameMenu extends JPanel {
         noB.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 noB.setSelected(!yesB.isSelected());
-                l.startGameP.loadSaves();
                 l.cardLayout.show(l.cardPane, "MainMenu");
             }
         });
