@@ -67,7 +67,7 @@ public class GameUI extends JPanel implements IGameUI {
 
     public void moveUp() {
         if (gameState.ship.position.y < getHeight())
-            gameState.ship.position.y -= 5;
+            gameState.ship.position.y -= 7;
     }
 
     public void createEgg() {
@@ -142,6 +142,14 @@ public class GameUI extends JPanel implements IGameUI {
         graphics.setFont(f);
         graphics.drawString("GAME OVER", 135, 450);
     }
+    public void paintGameWin(Graphics graphics) {
+        gameState.stopGameFlag = true;
+        graphics.setColor(Color.blue);
+        Font f = new Font("Dialog", Font.BOLD, 30);
+        graphics.setFont(f);
+        graphics.drawString("YOU SAVE THE PLANET", 100, 250);
+        graphics.drawString("Score : " + gameState.score, 100, 290);
+    }
 
     @Override
     public void paint(Graphics graphics) {
@@ -155,40 +163,8 @@ public class GameUI extends JPanel implements IGameUI {
         paintList(gameState.shots, graphics);
         graphics.setColor(Color.CYAN);
         gameState.ship.paint(graphics);
-
-        if (gameState.stopGameFlag) {
-            if (gameState.levelState == LevelState.Lose) {
-                panelGraph.cardLayout.show(panelGraph.cardPane, "EndGameMenu");
-                panelGraph.gameSaves.addRecord(panelGraph.startGameP.getPName(), gameState.score, gameState.level);
-            } else {
-                panelGraph.gameSaves.addRecord(panelGraph.startGameP.getPName(), gameState.score, gameState.level);
-                panelGraph.endGameP.setScore(Integer.toString(gameState.score));
-                gameState.timer.stop();
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                panelGraph.cardLayout.show(panelGraph.cardPane, "MainMenu");
-            }
-        }
-        if (gameState.levelState == LevelState.Win) {
-
-            if (gameState.ship.position.y > -100) {
-                moveUp();
-            } else if (gameState.Gamelevel.maxLevel == gameState.level) {
-                gameState.stopGameFlag = true;
-                Font f = new Font("Dialog", Font.BOLD, 30);
-                graphics.setFont(f);
-                graphics.drawString("YOU SAVE THE PLANET", 100, 250);
-                graphics.drawString("Score : " + gameState.score, 100, 290);
-            } else {
-                int tickNum = gameState.Gamelevel.levelList.get(gameState.level + 1).tick;
-                int eggIntervalNum = gameState.Gamelevel.levelList.get(gameState.level + 1).eggInterval;
-                gameState.timer.stop();
-                changeLevel(gameState.level + 1, gameState.lives, tickNum, eggIntervalNum, gameState.score);
-            }
-        }
+        if ( gameState.levelState ==LevelState.Win  && gameState.ship.position.y > -150)
+            moveUp();
     }
 
     @Override
@@ -206,6 +182,7 @@ public class GameUI extends JPanel implements IGameUI {
         gameState.levelState = LevelState.Started;
         gameState.timer.start();
         gameObservable.notifyLevelState(gameState.levelState);
+
 
     }
 
