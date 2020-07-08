@@ -27,10 +27,12 @@ public abstract class Sprite extends Observable {
     }
 
 
-    public void move(int deltaX,int deltaY){
-        if(state!=SpriteState.Alive) return;
+    public Point move(int deltaX,int deltaY){
+        if(state!=SpriteState.Alive)
+            return new Point(0,0);
         position.x+=deltaX;
         position.y+=deltaY;
+        return position;
     }
 
 

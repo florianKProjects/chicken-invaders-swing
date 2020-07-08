@@ -2,7 +2,7 @@ package src.com.chickenInavaders;
 
 public interface Commons {
     // Change it for debug
-    boolean IS_DEBUG = true;
+    boolean IS_DEBUG = false;
 
 
     //int BOARD_WIDTH = 1024; // 358
@@ -83,6 +83,7 @@ public interface Commons {
     String CLICK_SOUND = "src/com/chickenInavaders/resources/assets/sounds/CLICK.WAV";
     String WHOOSH_SOUND = "src/com/chickenInavaders/resources/assets/sounds/WHOOSH.WAV";
     String EXPLODE_SOUND = "src/com/chickenInavaders/resources/assets/sounds/EXPLODE.WAV";
+    String CRACKED_SOUND = "src/com/chickenInavaders/resources/assets/sounds/CRACK.WAV";
     //------------------------ AboutP ---------------------------
     String END_GAME_BACKGOURND = "src/com/chickenInavaders/resources/assets/images/EngGameMenu.jpg";
     //-------------------GAME PAUSE P ----------------------------------------

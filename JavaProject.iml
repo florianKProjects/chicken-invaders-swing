@@ -27,5 +27,7 @@
     </orderEntry>
     <orderEntry type="library" name="miglayout-4.0-swing" level="project" />
     <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" name="junit-4.13" level="project" />
+    <orderEntry type="library" name="mockito-all-1.10.19" level="project" />
   </component>
 </module>
