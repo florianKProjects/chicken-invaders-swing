@@ -11,7 +11,6 @@ import java.util.HashMap;
 public class Settings {
     private  int soundVolume;
     private HashMap<String, String> keyboardLayoutPlayer1 ;
-    private  HashMap<String, String> keyboardLayoutPlayer2 ;
     private JSONParser parser;
     private Object obj;
     private JSONObject jsonObject;
@@ -24,7 +23,6 @@ public class Settings {
 
     private void init(){
         keyboardLayoutPlayer1 = new HashMap<String, String>();
-        keyboardLayoutPlayer2 = new HashMap<String, String>();
         parser = new JSONParser();
         try {
             obj = parser.parse(new FileReader(Commons.SETTINGS_FILE));
@@ -46,13 +44,9 @@ public class Settings {
             JSONObject obj = (JSONObject)jsonObject.get("controls");
 
             JSONObject KetList = (JSONObject) obj.get("player_1");
-            JSONObject KeyList2 = (JSONObject) obj.get("player_2");
 
             KetList.forEach((k,v)  ->{
                 keyboardLayoutPlayer1.put((String)k,(String)v);
-            });
-            KeyList2.forEach((k,v)  ->{
-                keyboardLayoutPlayer2.put((String)k,(String)v);
             });
         } catch (Exception e) {
             e.printStackTrace();

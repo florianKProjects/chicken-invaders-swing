@@ -5,7 +5,6 @@ import src.com.chickenInavaders.gameui.GameUI;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Date;
 
 public class KeyboardListener implements KeyListener {
     private GameUI gameUI;
@@ -25,12 +24,6 @@ public class KeyboardListener implements KeyListener {
         leftKey = Integer.parseInt(settings.getKeyboardLayoutPlayer1("left"));
         rightKey = Integer.parseInt(settings.getKeyboardLayoutPlayer1("right"));
         fireKey = Integer.parseInt(settings.getKeyboardLayoutPlayer1("fire"));
-    }
-
-    private int getAsciiValue(String s) {
-        char c = s.charAt(0);
-        int n = KeyEvent.getExtendedKeyCodeForChar(c);
-        return 0;
     }
 
     @Override
@@ -56,6 +49,5 @@ public class KeyboardListener implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 }
