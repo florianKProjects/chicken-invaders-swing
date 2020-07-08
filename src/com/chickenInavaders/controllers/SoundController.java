@@ -1,5 +1,6 @@
 package src.com.chickenInavaders.controllers;
 
+import src.com.chickenInavaders.Commons;
 import src.com.chickenInavaders.controllers.settings.SettingsController;
 import javax.sound.sampled.*;
 import java.io.File;
@@ -16,7 +17,9 @@ public class SoundController {
             gainControl.setValue(gain);
             clip.start();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            if (Commons.IS_DEBUG)
+                System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

@@ -30,8 +30,9 @@ public class SaveReader {
         // addRecord("test3",1,2);
     }
 
-    private void LoadSaveFile() {
+    private JSONArray LoadSaveFile() {
         JSONParser parser = new JSONParser();
+        JSONArray companyList = new JSONArray();
         try {
             Object obj = parser.parse(new FileReader(Commons.LOAD_FILE));
             // A JSON object. Key value pairs are unordered. JSONObject supports
@@ -39,7 +40,7 @@ public class SaveReader {
             SaveFile = (JSONObject) obj;
             // A JSON array. JSONObject supports java.util.List interface.
             index = (int) ((long) SaveFile.get("lastIndex"));
-            JSONArray companyList = (JSONArray) SaveFile.get("Saves");
+            companyList = (JSONArray) SaveFile.get("Saves");
             companyList.forEach(item -> {
                 JSONObject obj2 = (JSONObject) item;
                 LoadsList.put(Integer.parseInt(obj2.get("Id").toString()),
@@ -50,9 +51,10 @@ public class SaveReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return companyList;
     }
 
-    public void addRecord(String name, int score, int level, String date) {
+    public int addRecord(String name, int score, int level, String date) {
         LoadsList.put(++index, new save(index, name, score, level, date));
         SaveFile.put("lastIndex", index);
         JSONObject newSave = new JSONObject();
@@ -69,33 +71,34 @@ public class SaveReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return index;
     }
 
     public void addRecord(String name, int score, int level) {
         DateTimeFormatter gameDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         addRecord(name, score, level, gameDate.format(now));
     }
-    public void updateRecord(int id,String updateFild, Object newValue){
-        switch(updateFild.toLowerCase()){
+
+    public void updateRecord(int id, String updateField, Object newValue) {
+        switch (updateField.toLowerCase()) {
             case "name":
-                LoadsList.get(id).name = (String)newValue;
+                LoadsList.get(id).name = (String) newValue;
                 break;
             case "score":
-                LoadsList.get(id).score = (int)newValue;
+                LoadsList.get(id).score = (int) newValue;
                 break;
             case "level":
-                LoadsList.get(id).level = (int)newValue;
+                LoadsList.get(id).level = (int) newValue;
                 break;
         }
         JSONArray companyList = (JSONArray) SaveFile.get("Saves");
         companyList.forEach(item -> {
             JSONObject obj2 = (JSONObject) item;
-            if (Integer.parseInt(obj2.get("Id").toString())==(id))
-            {
-                obj2.put(updateFild,newValue);
-            };
+            if (Integer.parseInt(obj2.get("Id").toString()) == (id)) {
+                obj2.put(updateField, newValue);
+            }
         });
-        SaveFile.put("Saves",companyList);
+        SaveFile.put("Saves", companyList);
         try (FileWriter file = new FileWriter(Commons.SAVES_FILE)) {
             file.write(SaveFile.toString());
             if (Commons.IS_DEBUG)
@@ -104,22 +107,17 @@ public class SaveReader {
             e.printStackTrace();
         }
     }
-    public int getLastIndex(){
+
+    public int getLastIndex() {
         return index;
     }
-    private JSONObject jsonFormatFromStirng(String s) {
-        return null;
-    }
 
-    public class save {
+    public static class save {
         public int id;
         public String name;
         public int score;
         public String date;
         public int level;
-
-        public save() {
-        }
 
         public save(int id, String name, int score, int level, String date) {
             this.id = id;

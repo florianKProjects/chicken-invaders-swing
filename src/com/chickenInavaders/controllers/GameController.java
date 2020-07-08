@@ -158,7 +158,8 @@ public class GameController extends JPanel implements IGameController {
         if ( gameState.levelState ==LevelState.Win  && gameState.ship.position.y > -150)
         {
             moveUp();
-            System.out.println(gameState.timer.toString());
+            if(Commons.IS_DEBUG)
+                System.out.println(gameState.timer.toString());
         }
     }
 

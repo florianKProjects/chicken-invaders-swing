@@ -84,6 +84,7 @@ public interface Commons {
     String WHOOSH_SOUND = "src/com/chickenInavaders/resources/assets/sounds/WHOOSH.WAV";
     String EXPLODE_SOUND = "src/com/chickenInavaders/resources/assets/sounds/EXPLODE.WAV";
     String CRACKED_SOUND = "src/com/chickenInavaders/resources/assets/sounds/CRACK.WAV";
+    String BUZZ_SOUND = "src/com/chickenInavaders/resources/assets/sounds/BUZZ.WAV";
     //------------------------ AboutP ---------------------------
     String END_GAME_BACKGOURND = "src/com/chickenInavaders/resources/assets/images/EngGameMenu.jpg";
     //-------------------GAME PAUSE P ----------------------------------------

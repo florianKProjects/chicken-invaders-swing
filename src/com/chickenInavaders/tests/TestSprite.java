@@ -12,8 +12,6 @@ public class TestSprite extends  TestCase{
     private Sprite sprite1;
     private Sprite sprite2;
 
-    public void TestSprite(){ }
-
     protected void setUp() {
         sprite1 = Mockito.mock(Sprite.class);
         sprite2 = Mockito.mock(Sprite.class);

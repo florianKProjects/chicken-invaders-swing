@@ -57,7 +57,10 @@ public class EggObserver implements Observer {
                     gameState.ship.setState(SpriteState.Dying);
                     gameState.levelState=LevelState.Lose;
                     gameState.stopGameFlag = true;
-                }else gameState.ship.flash();
+                }else {
+                    gameState.ship.flash();
+                    SoundController.play(Commons.BUZZ_SOUND);
+                }
             }
         }
     }
