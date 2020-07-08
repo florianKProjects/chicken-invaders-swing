@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09c82365-ef7c-4157-a0df-61b93eb3914a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/chickenInavaders/resources/assets/sounds/419023__jacco18__acess-denied-buzz.mp3" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/com/chickenInavaders/resources/assets/sounds/BUZZ.WAV" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/com/chickenInavaders/tests/TestSaveReader.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/com/chickenInavaders/tests/TestSettingsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/Commons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/Commons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/GameObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/GameObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/SoundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/SoundController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/observers/EggObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/observers/EggObserver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/settings/SaveReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/settings/SaveReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/settings/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/controllers/settings/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/resources/assets/sounds/EXPLODE.WAV" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/resources/assets/sounds/EXPLODE.WAV" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/resources/data/Save.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/resources/data/Save.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/resources/data/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/resources/data/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chickenInavaders/tests/TestSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chickenInavaders/tests/TestSprite.java" afterDir="false" />
@@ -157,7 +159,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593775209086</updated>
-      <workItem from="1594199941472" duration="14259000" />
+      <workItem from="1594199941472" duration="14638000" />
     </task>
     <task id="LOCAL-00001" summary="make main run on thread - common way to run swing program">
       <created>1594045903806</created>
@@ -215,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594204605733</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1.prints put under if(Commons.IS_DEBUG)&#10;2.changed sound source without 'tick' annoying sound&#10;3.added new tests: TestSaveReader and TestSettingsController">
+      <created>1594219089533</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1594219089533</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +251,8 @@
     <MESSAGE value="add images number 2 &#10;remove unused code" />
     <MESSAGE value="full refactor for mvc structure&#10;include file name changes and paths" />
     <MESSAGE value="include Junit, Mockito framework&#10;added tests of sprite &#10;updated sounds and manage sound volume" />
-    <option name="LAST_COMMIT_MESSAGE" value="include Junit, Mockito framework&#10;added tests of sprite &#10;updated sounds and manage sound volume" />
+    <MESSAGE value="1.prints put under if(Commons.IS_DEBUG)&#10;2.changed sound source without 'tick' annoying sound&#10;3.added new tests: TestSaveReader and TestSettingsController" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.prints put under if(Commons.IS_DEBUG)&#10;2.changed sound source without 'tick' annoying sound&#10;3.added new tests: TestSaveReader and TestSettingsController" />
   </component>
   <component name="WindowStateProjectService">
     <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594199958211">
@@ -257,10 +267,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="508" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594068433659" />
-    <state x="522" y="136" key="CommitChangelistDialog2" timestamp="1594204604996">
+    <state x="522" y="136" key="CommitChangelistDialog2" timestamp="1594219088885">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="522" y="136" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1594204604996" />
+    <state x="522" y="136" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1594219088885" />
     <state x="597" y="114" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594068969147" />
     <state x="2517" y="114" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1594066219657" />
     <state width="534" height="466" key="DebuggerActiveHint" timestamp="1594214395287">
@@ -272,28 +282,28 @@
     </state>
     <state x="9" y="23" width="1663" height="1017" maximized="true" key="DiffContextDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1594218245047" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594051651123" />
-    <state width="1638" height="235" key="GridCell.Tab.0.bottom" timestamp="1594218617420">
+    <state width="1638" height="235" key="GridCell.Tab.0.bottom" timestamp="1594218837188">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="235" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1594218617420" />
+    <state width="1638" height="235" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1594218837188" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594068969188" />
     <state width="1860" height="282" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1594066272306" />
-    <state width="1638" height="235" key="GridCell.Tab.0.center" timestamp="1594218617419">
+    <state width="1638" height="235" key="GridCell.Tab.0.center" timestamp="1594218837187">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="235" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1594218617419" />
+    <state width="1638" height="235" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1594218837187" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594068969188" />
     <state width="1860" height="282" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1594066272306" />
-    <state width="1638" height="235" key="GridCell.Tab.0.left" timestamp="1594218617419">
+    <state width="1638" height="235" key="GridCell.Tab.0.left" timestamp="1594218837187">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="235" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1594218617419" />
+    <state width="1638" height="235" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1594218837187" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594068969187" />
     <state width="1860" height="282" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1594066272306" />
-    <state width="1638" height="235" key="GridCell.Tab.0.right" timestamp="1594218617419">
+    <state width="1638" height="235" key="GridCell.Tab.0.right" timestamp="1594218837187">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="235" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1594218617419" />
+    <state width="1638" height="235" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1594218837187" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594068969188" />
     <state width="1860" height="282" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1594066272306" />
     <state width="1638" height="277" key="GridCell.Tab.1.bottom" timestamp="1594218253779">
@@ -325,10 +335,14 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="328" y="157" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1594200958965" />
-    <state x="439" y="276" key="Vcs.Push.Dialog.v2" timestamp="1594204608373">
+    <state x="717" y="459" key="VCS.EditChangelistDialog" timestamp="1594218891828">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="439" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1594204608373" />
+    <state x="717" y="459" key="VCS.EditChangelistDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1594218891828" />
+    <state x="439" y="276" key="Vcs.Push.Dialog.v2" timestamp="1594219091541">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="439" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1594219091541" />
     <state width="840" height="513" key="XDebugger.FullValuePopup" timestamp="1594213974564">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -337,10 +351,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="537" y="475" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1680.1027@0.23.1680.1027" timestamp="1594200920411" />
-    <state x="536" y="291" width="606" height="759" key="find.popup" timestamp="1594216497609">
+    <state x="536" y="291" width="606" height="759" key="find.popup" timestamp="1594218974362">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="536" y="291" width="606" height="759" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1594216497609" />
+    <state x="536" y="291" width="606" height="759" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1594218974362" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1594050202688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
