@@ -26,13 +26,17 @@ public abstract class Sprite extends Observable {
             this.state=state;
     }
 
-
-    public void move(int deltaX,int deltaY){
-        if(state!=SpriteState.Alive) return;
-        position.x+=deltaX;
-        position.y+=deltaY;
+    public SpriteState getState(){
+        return state;
     }
 
+    public Point move(int deltaX,int deltaY){
+        if(state!=SpriteState.Alive)
+            return new Point(0,0);
+        position.x+=deltaX;
+        position.y+=deltaY;
+        return position;
+    }
 
     public void paint(Graphics graphics){
         if(state!=SpriteState.Dead) {
@@ -46,10 +50,6 @@ public abstract class Sprite extends Observable {
                 notifyObservers();
             }
         }
-    }
-
-    public SpriteState getState(){
-        return state;
     }
 
     private boolean intersectX(Sprite other){
