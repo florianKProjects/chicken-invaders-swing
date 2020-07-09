@@ -39,8 +39,10 @@ public class StartGameP extends JPanel {
     private JComboBox<String> playersCobmBox;
     private LayoutManager panelGraph;
     private String palyes;
-    private int selectedLevel;
+    private String ShipColor;
     public String Playerid;
+    private int selectedLevel;
+
     public StartGameP(LayoutManager b) {
         panelGraph = b;
         palyes = "1";
@@ -91,6 +93,7 @@ public class StartGameP extends JPanel {
             panelGraph.gameUI.setName("Game");
             panelGraph.gameUI.addGameObserver(new GameObserver(panelGraph));
             panelGraph.gameUI.startLevel(selectedLevel, 3, levles.levelList.get(selectedLevel).tick, levles.levelList.get(selectedLevel).eggInterval);
+            setShipColor(ShipColor);
             panelGraph.cardPane.add("Game", panelGraph.gameUI);
             panelGraph.cardLayout.show(panelGraph.cardPane, "Game");
             panelGraph.cardPane.transferFocus();
@@ -104,7 +107,6 @@ public class StartGameP extends JPanel {
 
         add(p1Name);
         add(scrollPane1);
-        // add(playersComboBox);
         add(BackGroundP);
 
     }
@@ -130,6 +132,13 @@ public class StartGameP extends JPanel {
             ButtonList.put(item[0], newButton);
             add(newButton);
         }
+        ButtonList.get("RedP1").addActionListener(evt -> {
+            ShipColor="red";
+        });
+
+        ButtonList.get("BlueP1").addActionListener(evt -> {
+            ShipColor = "blue";
+        });
     }
 
     public void loadSaves() {
@@ -221,7 +230,10 @@ public class StartGameP extends JPanel {
                 break;
         }
     }
-
+    private void setShipColor(String Color)
+    {
+        panelGraph.gameUI.gameState.ship.changeShipColor(Color);
+    }
     public String getPName() {
         return p1Name.getText();
     }

@@ -32,7 +32,10 @@ public interface Commons {
     String SETTINGS_FILE = "src/com/chickenInavaders/resources/data/Settings.json";
 
     String SAVES_FILE = "src/com/chickenInavaders/resources/data/Save.json";
-
+    //------------------Ship-------------------
+    String RED_SHIP_GAME = "src/com/chickenInavaders/resources/assets/images/red_ship.png";
+    String BLUE_SHIP_GAME = "src/com/chickenInavaders/resources/assets/images/ship.png";
+    String BOOM_SHIP = "src/com/chickenInavaders/resources/assets/images/boom.png";
     //---------------- MainMenuP -------
     int BOARD_WIDTH = 600;
     int BOARD_HEIGHT = 800;
