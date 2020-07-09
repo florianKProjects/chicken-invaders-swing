@@ -47,6 +47,7 @@ public class StartGameP extends JPanel {
         panelGraph = b;
         palyes = "1";
         selectedLevel = 1;
+        ShipColor = "blue";
         ButtonList = new HashMap<String, GameButton>();
         BackGroundP = new JLabel();
         scrollPane1 = new JScrollPane();
